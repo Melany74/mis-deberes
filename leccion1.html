@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 1 - Actuación en Clase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFF5E1 50%, #E8E8E8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #FFB6C1, #FF9AB0);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .icon-title {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #4A4A4A;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .tag-evaluacion {
+            background-color: #FFF5E1;
+            color: #8B7355;
+        }
+
+        .objetivo-box {
+            background: linear-gradient(135deg, #FFF5E1, #FFE4E8);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #FFB6C1;
+            margin: 20px 0;
+        }
+
+        .objetivo-box h3 {
+            color: #FF6B8A;
+            margin-bottom: 10px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #4A4A4A;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFB6C1;
+        }
+
+        h3 {
+            color: #FF6B8A;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #D4A574;
+            margin: 15px 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .tipos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .tipo-card {
+            background: linear-gradient(135deg, #FFF9E6, #FFE4E8);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #D4A574;
+        }
+
+        .tipo-card h4 {
+            margin-top: 0;
+        }
+
+        code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            display: block;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .keyword {
+            color: #ff79c6;
+        }
+
+        .string {
+            color: #f1fa8c;
+        }
+
+        .comment {
+            color: #6272a4;
+        }
+
+        .number {
+            color: #bd93f9;
+        }
+
+        .operator {
+            color: #ff79c6;
+        }
+
+        .sintaxis-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #FFB6C1;
+        }
+
+        .operadores-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .operadores-table th {
+            background: #FFB6C1;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .operadores-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .operadores-table tr:hover {
+            background: #FFF5E1;
+        }
+
+        .ejercicio-box {
+            background: #FFF9E6;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #D4A574;
+        }
+
+        .ejercicio-numero {
+            background: #D4A574;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .solucion-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #50fa7b;
+        }
+
+        .solucion-box h4 {
+            color: #50fa7b;
+            margin-bottom: 10px;
+        }
+
+        .paso {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #FFB6C1;
+        }
+
+        .paso-numero {
+            color: #FF6B8A;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #FFE4E8;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #FF6B8A;
+            margin: 15px 0;
+        }
+
+        .highlight-box strong {
+            color: #FF6B8A;
+        }
+
+        .video-section {
+            background: linear-gradient(135deg, #FFE4E8, #FFF5E1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .video-section h3 {
+            color: #FF6B8A;
+            margin-bottom: 15px;
+        }
+
+        .video-placeholder {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            border: 3px dashed #FFB6C1;
+            color: #999;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+
+            .tipos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-back">← Regresar al Inicio</a>
+
+    <div class="container">
+        <div class="header-section">
+            <div class="icon-title"></div>
+            <h1>Lección 1: Actuación en Clase</h1>
+            <div class="tags">
+            </div>
+            <div class="objetivo-box">
+                <h3>Objetivo</h3>
+                <p>Participar activamente en clase y desarrollar una página web consolidando los conceptos aprendidos, demostrando comprensión mediante participación activa y práctica.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 1: EXPRESIONES -->
+        <div class="content-card">
+            <h2>1. ¿Qué es una Expresión?</h2>
+            
+            <p>Una <strong>expresión</strong> en programación es cualquier combinación válida de valores, variables, operadores y funciones que puede ser evaluada para producir un resultado.</p>
+
+            <div class="highlight-box">
+                <p><strong>Concepto clave:</strong> Las expresiones son los "cálculos" del código. Siempre producen un valor como resultado.</p>
+            </div>
+
+            <h3>Tipos de Expresiones</h3>
+
+            <div class="tipos-grid">
+                <div class="tipo-card">
+                    <h4>1️.- Expresiones Aritméticas</h4>
+                    <p>Realizan operaciones matemáticas y producen un valor numérico.</p>
+                </div>
+
+                <div class="tipo-card">
+                    <h4>2️.- Expresiones Lógicas</h4>
+                    <p>Evalúan condiciones y producen valores booleanos (true o false).</p>
+                </div>
+
+                <div class="tipo-card">
+                    <h4>3️.- Expresiones de Cadena</h4>
+                    <p>Manipulan texto y producen valores de tipo string.</p>
+                </div>
+
+                <div class="tipo-card">
+                    <h4>4️.- Expresiones de Asignación</h4>
+                    <p>Asignan valores a variables y retornan el valor asignado.</p>
+                </div>
+            </div>
+
+            <h3>Ejemplos de Expresiones</h3>
+
+            <div class="sintaxis-box">
+                <h4>Expresiones Aritméticas:</h4>
+                <code><span class="comment">// Expresión simple</span>
+<span class="number">5</span> <span class="operator">+</span> <span class="number">3</span>                    <span class="comment">// Resultado: 8</span>
+
+<span class="comment">// Expresión con variables</span>
+<span class="keyword">let</span> x = <span class="number">10</span>;
+<span class="keyword">let</span> y = <span class="number">20</span>;
+x <span class="operator">*</span> y <span class="operator">-</span> <span class="number">50</span>              <span class="comment">// Resultado: 150</span>
+
+<span class="comment">// Expresión compleja</span>
+(x <span class="operator">+</span> y) <span class="operator">/</span> <span class="number">2</span>            <span class="comment">// Resultado: 15 (promedio)</span></code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Expresiones Lógicas:</h4>
+                <code><span class="comment">// Comparaciones</span>
+<span class="number">10</span> <span class="operator">></span> <span class="number">5</span>                  <span class="comment">// Resultado: true</span>
+<span class="number">3</span> <span class="operator">===</span> <span class="number">3</span>                 <span class="comment">// Resultado: true</span>
+
+<span class="comment">// Operadores lógicos</span>
+(<span class="number">5</span> <span class="operator">></span> <span class="number">3</span>) <span class="operator">&&</span> (<span class="number">10</span> <span class="operator"><</span> <span class="number">20</span>)  <span class="comment">// Resultado: true</span>
+(<span class="number">5</span> <span class="operator">===</span> <span class="number">3</span>) <span class="operator">||</span> (<span class="number">7</span> <span class="operator">></span> <span class="number">2</span>)  <span class="comment">// Resultado: true</span></code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Expresiones de Cadena:</h4>
+                <code><span class="comment">// Concatenación</span>
+<span class="string">"Hola"</span> <span class="operator">+</span> <span class="string">" "</span> <span class="operator">+</span> <span class="string">"Mundo"</span>   <span class="comment">// Resultado: "Hola Mundo"</span>
+
+<span class="comment">// Template literals</span>
+<span class="keyword">let</span> nombre = <span class="string">"Ana"</span>;
+<span class="string">`Hola, ${nombre}!`</span>    <span class="comment">// Resultado: "Hola, Ana!"</span></code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Expresiones de Asignación:</h4>
+                <code><span class="comment">// Asignación simple</span>
+<span class="keyword">let</span> edad = <span class="number">25</span>;          <span class="comment">// Asigna 25 a edad</span>
+
+<span class="comment">// Asignación con operación</span>
+edad <span class="operator">+=</span> <span class="number">1</span>;             <span class="comment">// edad = edad + 1</span>
+edad <span class="operator">*=</span> <span class="number">2</span>;             <span class="comment">// edad = edad * 2</span></code>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: OPERADORES -->
+        <div class="content-card">
+            <h2>2. Tipos de Operadores</h2>
+            
+            <p>Los <strong>operadores</strong> son símbolos que le indican al programa que realice operaciones específicas sobre uno o más valores.</p>
+
+            <h3>Operadores Aritméticos</h3>
+            <p>Realizan operaciones matemáticas básicas.</p>
+
+            <table class="operadores-table">
+                <thead>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Nombre</th>
+                        <th>Ejemplo</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>+</strong></td>
+                        <td>Suma</td>
+                        <td>5 + 3</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td><strong>-</strong></td>
+                        <td>Resta</td>
+                        <td>10 - 4</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td><strong>*</strong></td>
+                        <td>Multiplicación</td>
+                        <td>3 * 4</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/</strong></td>
+                        <td>División</td>
+                        <td>20 / 5</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>%</strong></td>
+                        <td>Módulo (residuo)</td>
+                        <td>10 % 3</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>**</strong></td>
+                        <td>Exponenciación</td>
+                        <td>2 ** 3</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td><strong>++</strong></td>
+                        <td>Incremento</td>
+                        <td>x++</td>
+                        <td>x + 1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>--</strong></td>
+                        <td>Decremento</td>
+                        <td>x--</td>
+                        <td>x - 1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Operadores Relacionales (Comparación)</h3>
+            <p>Comparan dos valores y devuelven true o false.</p>
+
+            <table class="operadores-table">
+                <thead>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Nombre</th>
+                        <th>Ejemplo</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>==</strong></td>
+                        <td>Igual a (valor)</td>
+                        <td>5 == "5"</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><strong>===</strong></td>
+                        <td>Estrictamente igual (valor y tipo)</td>
+                        <td>5 === "5"</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td><strong>!=</strong></td>
+                        <td>Diferente de</td>
+                        <td>5 != 3</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><strong>!==</strong></td>
+                        <td>Estrictamente diferente</td>
+                        <td>5 !== "5"</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><strong>></strong></td>
+                        <td>Mayor que</td>
+                        <td>10 > 5</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><strong><</strong></td>
+                        <td>Menor que</td>
+                        <td>3 < 8</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><strong>>=</strong></td>
+                        <td>Mayor o igual que</td>
+                        <td>5 >= 5</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><strong><=</strong></td>
+                        <td>Menor o igual que</td>
+                        <td>3 <= 7</td>
+                        <td>true</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Operadores Lógicos</h3>
+            <p>Combinan o invierten valores booleanos.</p>
+
+            <table class="operadores-table">
+                <thead>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>&&</strong></td>
+                        <td>AND (Y)</td>
+                        <td>Verdadero si ambas condiciones son verdaderas</td>
+                        <td>(5 > 3) && (10 > 7) → true</td>
+                    </tr>
+                    <tr>
+                        <td><strong>||</strong></td>
+                        <td>OR (O)</td>
+                        <td>Verdadero si al menos una condición es verdadera</td>
+                        <td>(5 < 3) || (10 > 7) → true</td>
+                    </tr>
+                    <tr>
+                        <td><strong>!</strong></td>
+                        <td>NOT (NO)</td>
+                        <td>Invierte el valor booleano</td>
+                        <td>!(5 > 3) → false</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Operadores de Asignación</h3>
+            <p>Asignan valores a variables.</p>
+
+            <table class="operadores-table">
+                <thead>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Ejemplo</th>
+                        <th>Equivalente a</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>=</strong></td>
+                        <td>x = 5</td>
+                        <td>x = 5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>+=</strong></td>
+                        <td>x += 3</td>
+                        <td>x = x + 3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>-=</strong></td>
+                        <td>x -= 2</td>
+                        <td>x = x - 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>*=</strong></td>
+                        <td>x *= 4</td>
+                        <td>x = x * 4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/=</strong></td>
+                        <td>x /= 2</td>
+                        <td>x = x / 2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>%=</strong></td>
+                        <td>x %= 3</td>
+                        <td>x = x % 3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo combinado de operadores:</h4>
+                <code><span class="keyword">let</span> a = <span class="number">10</span>;
+<span class="keyword">let</span> b = <span class="number">5</span>;
+<span class="keyword">let</span> c = <span class="number">3</span>;
+
+<span class="comment">// Operadores aritméticos</span>
+<span class="keyword">let</span> suma = a <span class="operator">+</span> b;              <span class="comment">// 15</span>
+<span class="keyword">let</span> producto = a <span class="operator">*</span> c;         <span class="comment">// 30</span>
+
+<span class="comment">// Operadores relacionales</span>
+<span class="keyword">let</span> esMayor = a <span class="operator">></span> b;          <span class="comment">// true</span>
+<span class="keyword">let</span> sonIguales = a <span class="operator">===</span> b;      <span class="comment">// false</span>
+
+<span class="comment">// Operadores lógicos</span>
+<span class="keyword">let</span> resultado = (a <span class="operator">></span> b) <span class="operator">&&</span> (c <span class="operator"><</span> b);  <span class="comment">// true</span>
+
+<span class="comment">// Operadores de asignación</span>
+a <span class="operator">+=</span> <span class="number">5</span>;                       <span class="comment">// a ahora es 15</span>
+b <span class="operator">*=</span> <span class="number">2</span>;                       <span class="comment">// b ahora es 10</span></code>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: EJERCICIOS -->
+        <div class="content-card">
+            <h2>3. Ejercicios sobre Funciones</h2>
+            
+            <!-- EJERCICIO 1 -->
+            <div class="ejercicio-box">
+                <span class="ejercicio-numero">Ejercicio 1</span>
+                <h3 style="color: #D4A574; margin-top: 10px;">Crear una función que calcule el área de un rectángulo</h3>
+                <p><strong>Problema:</strong> Escribe una función que reciba la base y altura de un rectángulo y retorne su área.</p>
+                
+                <div class="solucion-box">
+                    <h4>Solución Paso a Paso</h4>
+                    
+                    <div class="paso">
+                        <p class="paso-numero">Paso 1: Definir la función</p>
+                        <p>Creamos una función con dos parámetros: base y altura</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 2: Calcular el área</p>
+                        <p>El área de un rectángulo es: base × altura</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 3: Retornar el resultado</p>
+                        <p>Usamos return para devolver el valor calculado</p>
+                    </div>
+
+                    <code><span class="comment">// Solución</span>
+<span class="keyword">function</span> <span class="function-name">calcularAreaRectangulo</span>(base, altura) {
+    <span class="keyword">let</span> area = base <span class="operator">*</span> altura;
+    <span class="keyword">return</span> area;
+}
+
+<span class="comment">// Forma simplificada</span>
+<span class="keyword">const</span> <span class="function-name">calcularArea</span> = (base, altura) => base <span class="operator">*</span> altura;
+
+<span class="comment">// Uso</span>
+<span class="keyword">let</span> resultado = <span class="function-name">calcularAreaRectangulo</span>(<span class="number">5</span>, <span class="number">3</span>);
+console.log(<span class="string">`El área es: ${resultado}`</span>); <span class="comment">// El área es: 15</span></code>
+                </div>
+            </div>
+
+            <!-- EJERCICIO 2 -->
+            <div class="ejercicio-box">
+                <span class="ejercicio-numero">Ejercicio 2</span>
+                <h3 style="color: #D4A574; margin-top: 10px;">Crear una función que determine si un número es par o impar</h3>
+                <p><strong>Problema:</strong> Escribe una función que reciba un número y retorne "Par" si es par, o "Impar" si es impar.</p>
+                
+                <div class="solucion-box">
+                    <h4>Solución Paso a Paso</h4>
+                    
+                    <div class="paso">
+                        <p class="paso-numero">Paso 1: Definir la función</p>
+                        <p>Creamos una función que reciba un número como parámetro</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 2: Usar el operador módulo (%)</p>
+                        <p>Si numero % 2 === 0, el número es par</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 3: Retornar el resultado</p>
+                        <p>Usamos un condicional para retornar "Par" o "Impar"</p>
+                    </div>
+
+                    <code><span class="comment">// Solución</span>
+<span class="keyword">function</span> <span class="function-name">esParOImpar</span>(numero) {
+    <span class="keyword">if</span> (numero <span class="operator">%</span> <span class="number">2</span> <span class="operator">===</span> <span class="number">0</span>) {
+        <span class="keyword">return</span> <span class="string">"Par"</span>;
+    } <span class="keyword">else</span> {
+        <span class="keyword">return</span> <span class="string">"Impar"</span>;
+    }
+}
+
+<span class="comment">// Forma simplificada con operador ternario</span>
+<span class="keyword">const</span> <span class="function-name">parImpar</span> = (num) => (num <span class="operator">%</span> <span class="number">2</span> <span class="operator">===</span> <span class="number">0</span>) ? <span class="string">"Par"</span> : <span class="string">"Impar"</span>;
+
+<span class="comment">// Uso</span>
+console.log(<span class="function-name">esParOImpar</span>(<span class="number">8</span>));  <span class="comment">// "Par"</span>
+console.log(<span class="function-name">esParOImpar</span>(<span class="number">7</span>));  <span class="comment">// "Impar"</span></code>
+                </div>
+            </div>
+
+            <!-- EJERCICIO 3 -->
+            <div class="ejercicio-box">
+                <span class="ejercicio-numero">Ejercicio 3</span>
+                <h3 style="color: #D4A574; margin-top: 10px;">Crear una función que convierta grados Celsius a Fahrenheit</h3>
+                <p><strong>Problema:</strong> Escribe una función que convierta una temperatura de Celsius a Fahrenheit usando la fórmula: F = (C × 9/5) + 32</p>
+                
+                <div class="solucion-box">
+                    <h4>Solución Paso a Paso</h4>
+                    
+                    <div class="paso">
+                        <p class="paso-numero">Paso 1: Definir la función</p>
+                        <p>Creamos una función que reciba los grados Celsius</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 2: Aplicar la fórmula</p>
+                        <p>F = (C × 9/5) + 32</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 3: Retornar el resultado</p>
+                        <p>Devolvemos la temperatura en Fahrenheit</p>
+                    </div>
+
+                    <code><span class="comment">// Solución</span>
+<span class="keyword">function</span> <span class="function-name">celsiusAFahrenheit</span>(celsius) {
+    <span class="keyword">let</span> fahrenheit = (celsius <span class="operator">*</span> <span class="number">9</span> <span class="operator">/</span> <span class="number">5</span>) <span class="operator">+</span> <span class="number">32</span>;
+    <span class="keyword">return</span> fahrenheit;
+}
+
+<span class="comment">// Forma simplificada</span>
+<span class="keyword">const</span> <span class="function-name">convertirTemp</span> = (c) => (c <span class="operator">*</span> <span class="number">9</span> <span class="operator">/</span> <span class="number">5</span>) <span class="operator">+</span> <span class="number">32</span>;
+
+<span class="comment">// Uso</span>
+console.log(<span class="function-name">celsiusAFahrenheit</span>(<span class="number">0</span>));   <span class="comment">// 32°F</span>
+console.log(<span class="function-name">celsiusAFahrenheit</span>(<span class="number">100</span>)); <span class="comment">// 212°F</span>
+console.log(<span class="function-name">celsiusAFahrenheit</span>(<span class="number">25</span>));  <span class="comment">// 77°F</span></code>
+                </div>
+            </div>
+
+            <!-- EJERCICIO 4 -->
+            <div class="ejercicio-box">
+                <span class="ejercicio-numero">Ejercicio 4</span>
+                <h3 style="color: #D4A574; margin-top: 10px;">Crear una función que encuentre el número mayor de tres números</h3>
+                <p><strong>Problema:</strong> Escribe una función que reciba tres números y retorne el mayor de ellos.</p>
+                
+                <div class="solucion-box">
+                    <h4>Solución Paso a Paso</h4>
+                    
+                    <div class="paso">
+                        <p class="paso-numero">Paso 1: Definir la función</p>
+                        <p>Creamos una función con tres parámetros</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 2: Comparar los números</p>
+                        <p>Usamos condicionales para comparar los tres números</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 3: Retornar el mayor</p>
+                        <p>Devolvemos el número que sea mayor que los otros dos</p>
+                    </div>
+
+                    <code><span class="comment">// Solución con condicionales</span>
+<span class="keyword">function</span> <span class="function-name">encontrarMayor</span>(num1, num2, num3) {
+    <span class="keyword">if</span> (num1 <span class="operator">>=</span> num2 <span class="operator">&&</span> num1 <span class="operator">>=</span> num3) {
+        <span class="keyword">return</span> num1;
+    } <span class="keyword">else if</span> (num2 <span class="operator">>=</span> num1 <span class="operator">&&</span> num2 <span class="operator">>=</span> num3) {
+        <span class="keyword">return</span> num2;
+    } <span class="keyword">else</span> {
+        <span class="keyword">return</span> num3;
+    }
+}
+
+<span class="comment">// Solución usando Math.max()</span>
+<span class="keyword">const</span> <span class="function-name">numeroMayor</span> = (a, b, c) => Math.<span class="function-name">max</span>(a, b, c);
+
+<span class="comment">// Uso</span>
+console.log(<span class="function-name">encontrarMayor</span>(<span class="number">5</span>, <span class="number">12</span>, <span class="number">8</span>));  <span class="comment">// 12</span>
+console.log(<span class="function-name">encontrarMayor</span>(<span class="number">15</span>, <span class="number">3</span>, <span class="number">20</span>)); <span class="comment">// 20</span>
+console.log(<span class="function-name">numeroMayor</span>(<span class="number">7</span>, <span class="number">9</span>, <span class="number">4</span>));    <span class="comment">// 9</span></code>
+                </div>
+            </div>
+
+            <!-- EJERCICIO 5 -->
+            <div class="ejercicio-box">
+                <span class="ejercicio-numero">Ejercicio 5</span>
+                <h3 style="color: #D4A574; margin-top: 10px;">Crear una función que calcule el promedio de un array de números</h3>
+                <p><strong>Problema:</strong> Escribe una función que reciba un array de números y retorne el promedio de todos ellos.</p>
+                
+                <div class="solucion-box">
+                    <h4>Solución Paso a Paso</h4>
+                    
+                    <div class="paso">
+                        <p class="paso-numero">Paso 1: Definir la función</p>
+                        <p>Creamos una función que reciba un array como parámetro</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 2: Sumar todos los elementos</p>
+                        <p>Usamos un bucle o el método reduce() para sumar</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 3: Dividir entre la cantidad</p>
+                        <p>Dividimos la suma entre el número de elementos</p>
+                    </div>
+
+                    <div class="paso">
+                        <p class="paso-numero">Paso 4: Manejar casos especiales</p>
+                        <p>Verificar que el array no esté vacío para evitar dividir entre 0</p>
+                    </div>
+
+                    <code><span class="comment">// Solución con bucle for</span>
+<span class="keyword">function</span> <span class="function-name">calcularPromedio</span>(numeros) {
+    <span class="keyword">if</span> (numeros.length <span class="operator">===</span> <span class="number">0</span>) {
+        <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// Array vacío</span>
+    }
+    
+    <span class="keyword">let</span> suma = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i <span class="operator"><</span> numeros.length; i++) {
+        suma <span class="operator">+=</span> numeros[i];
+    }
+    
+    <span class="keyword">let</span> promedio = suma <span class="operator">/</span> numeros.length;
+    <span class="keyword">return</span> promedio;
+}
+
+<span class="comment">// Solución con reduce()</span>
+<span class="keyword">const</span> <span class="function-name">promedioArray</span> = (arr) => {
+    <span class="keyword">if</span> (arr.length <span class="operator">===</span> <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;
+    <span class="keyword">const</span> suma = arr.<span class="function-name">reduce</span>((acc, num) => acc <span class="operator">+</span> num, <span class="number">0</span>);
+    <span class="keyword">return</span> suma <span class="operator">/</span> arr.length;
+};
+
+<span class="comment">// Uso</span>
+<span class="keyword">let</span> notas = [<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>, <span class="number">92</span>, <span class="number">88</span>];
+console.log(<span class="function-name">calcularPromedio</span>(notas)); <span class="comment">// 86.6</span>
+
+<span class="keyword">let</span> edades = [<span class="number">20</span>, <span class="number">25</span>, <span class="number">30</span>];
+console.log(<span class="function-name">promedioArray</span>(edades));   <span class="comment">// 25</span></code>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="video-section">
+                <h3>Participación en Clase (Video)</h3>
+                <div class="video-placeholder">
+                    AQUÍ VA EL LINK DEL DRIVE DONDE SUBISTE EL VIDEO DE TU PARTICIPACIÓN EN CLASE
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

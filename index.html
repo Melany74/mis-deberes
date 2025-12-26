@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Deberes - Programación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e0e5ec;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 
+                -2px -2px 4px rgba(255, 255, 255, 0.8),
+                2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #546e7a;
+            font-size: 1.2em;
+            font-weight: 400;
+            text-shadow: 
+                -1px -1px 2px rgba(255, 255, 255, 0.8),
+                1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #e0e5ec;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 
+                9px 9px 16px rgba(163, 177, 198, 0.6),
+                -9px -9px 16px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+
+        .card:hover {
+            box-shadow: 
+                inset 4px 4px 8px rgba(163, 177, 198, 0.4),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+                6px 6px 12px rgba(163, 177, 198, 0.4),
+                -6px -6px 12px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(2px 2px 3px rgba(163, 177, 198, 0.4));
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-shadow: 
+                1px 1px 2px rgba(255, 255, 255, 0.5),
+                -1px -1px 2px rgba(163, 177, 198, 0.2);
+        }
+
+        .card-description {
+            color: #546e7a;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .card-objective {
+            color: #607d8b;
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-top: 15px;
+            padding-top: 15px;
+            font-style: italic;
+            border-top: 1px solid rgba(163, 177, 198, 0.2);
+        }
+
+        .card-type, .card-category {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            margin-top: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #e0e5ec;
+            box-shadow: 
+                3px 3px 6px rgba(163, 177, 198, 0.4),
+                -3px -3px 6px rgba(255, 255, 255, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .card-type:hover, .card-category:hover {
+            box-shadow: 
+                inset 2px 2px 4px rgba(163, 177, 198, 0.3),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .card-category {
+            margin-left: 8px;
+            font-size: 0.8em;
+        }
+
+        .tipo-tarea, .cat-deber {
+            color: #d81b60;
+        }
+
+        .tipo-evaluacion, .cat-leccion {
+            color: #f57c00;
+        }
+
+        .tipo-examen, .cat-examen {
+            color: #5e35b1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #546e7a;
+            margin-top: 60px;
+            text-shadow: 
+                1px 1px 2px rgba(255, 255, 255, 0.5),
+                -1px -1px 2px rgba(163, 177, 198, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mis Deberes</h1>
+            <p class="subtitle">Programación Visual Avanzada</p>
+        </header>
+
+        <div class="grid">
+            <a href="deber1.html" class="card">
+                <span class="card-icon"></span>
+                <h2 class="card-title">Deber 1: Sentencias de Control</h2>
+                <p class="card-description">Desarrollar una página web explicando las sentencias de control, su sintaxis y conceptos fundamentales.</p>
+                <p class="card-objective"><strong>Objetivo:</strong> Comprender y aplicar estructuras de control en programación.</p>
+                <div>
+                    <span class="card-type tipo-tarea">Deber</span>
+                </div>
+            </a>
+
+            <a href="deber2.html" class="card">
+                <span class="card-icon"></span>
+                <h2 class="card-title">Deber 2: Funciones</h2>
+                <p class="card-description">Crear una página web explicando la teoría de funciones con ejemplos prácticos e imágenes ilustrativas.</p>
+                <p class="card-objective"><strong>Objetivo:</strong> Dominar la creación y uso de funciones en programación.</p>
+                <div>
+                    <span class="card-type tipo-tarea">Deber</span>
+                </div>
+            </a>
+
+            <a href="deber3.html" class="card">
+                <span class="card-icon"></span>
+                <h2 class="card-title">Deber 3: Programación Orientada a Objetos</h2>
+                <p class="card-description">Desarrollar una página web explicando los conceptos fundamentales de la POO.</p>
+                <p class="card-objective"><strong>Objetivo:</strong> Comprender los pilares de la Programación Orientada a Objetos.</p>
+                <div>
+                    <span class="card-type tipo-tarea">Deber</span>
+                </div>
+            </a>
+
+            <a href="leccion1.html" class="card">
+                <span class="card-icon"></span>
+                <h2 class="card-title">Lección 1: Actuación en Clase</h2>
+                <p class="card-description">Participar activamente en clase y desarrollar una página web consolidando los conceptos aprendidos.</p>
+                <p class="card-objective"><strong>Objetivo:</strong> Demostrar comprensión mediante participación activa y práctica.</p>
+                <div>
+                    <span class="card-category cat-leccion">Lección</span>
+                </div>
+            </a>
+
+            <a href="leccion2.html" class="card">
+                <span class="card-icon"></span>
+                <h2 class="card-title">Lección 2: Figma - Herramientas de Diseño</h2>
+                <p class="card-description">Crear una página web documentando los comandos más utilizados en Figma para diseño de interfaces.</p>
+                <p class="card-objective"><strong>Objetivo:</strong> Dominar las herramientas esenciales de Figma para UI/UX.</p>
+                <div>
+                    <span class="card-category cat-leccion">Lección</span>
+                </div>
+            </a>
+
+            <a href="examen-final.html" class="card">
+                <span class="card-icon"></span>
+                <h2 class="card-title">Examen Final: Proyecto de Desarrollo</h2>
+                <p class="card-description">Aplicar todo el proceso de desarrollo de software, desde el contacto con el cliente hasta la aprobación del diseño en Figma.</p>
+                <p class="card-objective"><strong>Objetivo:</strong> Integrar todos los conocimientos en un proyecto completo.</p>
+                <div>
+                    <span class="card-category cat-examen">Examen Final</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deber 2 - Funciones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFF5E1 50%, #E8E8E8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #FFB6C1, #FF9AB0);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .icon-title {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #4A4A4A;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .tag-tarea {
+            background-color: #FFB6C1;
+            color: white;
+        }
+
+        .objetivo-box {
+            background: linear-gradient(135deg, #FFF5E1, #FFE4E8);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #FFB6C1;
+            margin: 20px 0;
+        }
+
+        .objetivo-box h3 {
+            color: #FF6B8A;
+            margin-bottom: 10px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #4A4A4A;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFB6C1;
+        }
+
+        h3 {
+            color: #FF6B8A;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .diagram-box {
+            background: linear-gradient(135deg, #FFF5E1, #FFE4E8);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .diagram {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #FFB6C1;
+        }
+
+        .diagram-title {
+            color: #FF6B8A;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .flow-step {
+            background: #FFB6C1;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin: 10px auto;
+            max-width: 300px;
+            font-weight: 600;
+        }
+
+        .arrow {
+            color: #FFB6C1;
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            display: block;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .keyword {
+            color: #ff79c6;
+        }
+
+        .string {
+            color: #f1fa8c;
+        }
+
+        .comment {
+            color: #6272a4;
+        }
+
+        .function-name {
+            color: #50fa7b;
+        }
+
+        .number {
+            color: #bd93f9;
+        }
+
+        .sintaxis-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #FFB6C1;
+        }
+
+        .sintaxis-box h4 {
+            color: #FF6B8A;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .comparison-table th {
+            background: #FFB6C1;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .comparison-table tr:hover {
+            background: #FFF5E1;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #FFE4E8, #FFF9E6);
+            padding: 60px;
+            border-radius: 15px;
+            border: 3px dashed #FFB6C1;
+            text-align: center;
+            color: #999;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .video-section {
+            background: linear-gradient(135deg, #FFE4E8, #FFF5E1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .video-section h3 {
+            color: #FF6B8A;
+            margin-bottom: 15px;
+        }
+
+        .video-placeholder {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            border: 3px dashed #FFB6C1;
+            color: #999;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #FFF9E6;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #D4A574;
+            margin: 15px 0;
+        }
+
+        .highlight-box strong {
+            color: #D4A574;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-back">← Regresar al Inicio</a>
+
+    <div class="container">
+        <div class="header-section">
+            <div class="icon-title"></div>
+            <h1>Deber 2: Funciones</h1>
+            <div class="tags">
+            </div>
+            <div class="objetivo-box">
+                <h3>Objetivo</h3>
+                <p>Crear una página web explicando la teoría de funciones con ejemplos prácticos e imágenes ilustrativas para dominar la creación y uso de funciones en programación.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>¿Qué son las Funciones en Programación?</h2>
+            <p>Las <strong>funciones</strong> son bloques de código reutilizables que realizan una tarea específica. Son fundamentales en programación porque permiten:</p>
+            <ul>
+                <li><strong>Reutilización de código:</strong> Escribes el código una vez y lo usas múltiples veces</li>
+                <li><strong>Organización:</strong> Divides programas grandes en partes más pequeñas y manejables</li>
+                <li><strong>Mantenibilidad:</strong> Facilita la corrección de errores y actualización del código</li>
+                <li><strong>Abstracción:</strong> Oculta la complejidad interna y expone solo lo necesario</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Concepto clave:</strong> Una función es como una "máquina" que recibe datos de entrada (parámetros), realiza una operación, y produce un resultado (valor de retorno).</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Diagrama: Estructura de una Función</h2>
+            <div class="diagram-box">
+                <div class="diagram">
+                    <div class="diagram-title">Anatomía de una Función</div>
+                    <div class="flow-step">ENTRADA: Parámetros</div>
+                    <div class="arrow">↓</div>
+                    <div class="flow-step"> PROCESO: Código de la función</div>
+                    <div class="arrow">↓</div>
+                    <div class="flow-step"> SALIDA: Valor de retorno</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Funciones.png" alt="Estructura de Funciones" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <p style="color: #999; font-size: 0.9em; margin-top: 10px; font-style: italic;">Diagrama: Estructura y componentes de una función</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Tipos de Funciones en JavaScript</h2>
+            
+            <h3>1. Función Declarada (Function Declaration)</h3>
+            <p>Es la forma tradicional de declarar funciones. Se define usando la palabra clave <code style="display:inline; padding:2px 5px; background:#f0f0f0; color:#FF6B8A;">function</code>.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Sintaxis:</h4>
+                <code><span class="keyword">function</span> <span class="function-name">nombreFuncion</span>(parametro1, parametro2) {
+    <span class="comment">// código a ejecutar</span>
+    <span class="keyword">return</span> resultado;
+}</code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">function</span> <span class="function-name">sumar</span>(a, b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="comment">// Llamar a la función</span>
+<span class="keyword">let</span> resultado = <span class="function-name">sumar</span>(<span class="number">5</span>, <span class="number">3</span>);
+console.log(resultado); <span class="comment">// Imprime: 8</span></code>
+            </div>
+
+            <h3>2. Expresión de Función (Function Expression)</h3>
+            <p>La función se asigna a una variable. No puede ser llamada antes de su definición.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">const</span> <span class="function-name">multiplicar</span> = <span class="keyword">function</span>(a, b) {
+    <span class="keyword">return</span> a * b;
+};
+
+<span class="keyword">let</span> resultado = <span class="function-name">multiplicar</span>(<span class="number">4</span>, <span class="number">5</span>);
+console.log(resultado); <span class="comment">// Imprime: 20</span></code>
+            </div>
+
+            <h3>3. Función Flecha (Arrow Function)</h3>
+            <p>Sintaxis moderna y más concisa introducida en ES6. Ideal para funciones cortas.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Sintaxis:</h4>
+                <code><span class="keyword">const</span> <span class="function-name">nombreFuncion</span> = (parametros) => {
+    <span class="comment">// código</span>
+    <span class="keyword">return</span> resultado;
+};
+
+<span class="comment">// Si solo tiene una expresión, puede ser más corta:</span>
+<span class="keyword">const</span> <span class="function-name">nombreFuncion</span> = (parametros) => resultado;</code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplos:</h4>
+                <code><span class="comment">// Función flecha básica</span>
+<span class="keyword">const</span> <span class="function-name">restar</span> = (a, b) => {
+    <span class="keyword">return</span> a - b;
+};
+
+<span class="comment">// Función flecha simplificada (una línea)</span>
+<span class="keyword">const</span> <span class="function-name">dividir</span> = (a, b) => a / b;
+
+<span class="comment">// Función flecha con un solo parámetro (sin paréntesis)</span>
+<span class="keyword">const</span> <span class="function-name">cuadrado</span> = x => x * x;
+
+console.log(<span class="function-name">cuadrado</span>(<span class="number">5</span>)); <span class="comment">// Imprime: 25</span></code>
+            </div>
+
+            <h3>4. Función Anónima</h3>
+            <p>Funciones sin nombre, generalmente usadas como argumentos de otras funciones.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="comment">// Función anónima como callback</span>
+setTimeout(<span class="keyword">function</span>() {
+    console.log(<span class="string">"Esto se ejecuta después de 2 segundos"</span>);
+}, <span class="number">2000</span>);
+
+<span class="comment">// O con función flecha</span>
+setTimeout(() => {
+    console.log(<span class="string">"Versión con arrow function"</span>);
+}, <span class="number">2000</span>);</code>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Comparación de Tipos de Funciones</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Características</th>
+                        <th>Cuándo usar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Declarada</strong></td>
+                        <td>Puede llamarse antes de ser definida (hoisting)</td>
+                        <td>Funciones principales del programa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Expresión</strong></td>
+                        <td>Solo disponible después de su definición</td>
+                        <td>Cuando necesitas asignar funciones a variables</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flecha</strong></td>
+                        <td>Sintaxis corta, no tiene su propio "this"</td>
+                        <td>Callbacks, funciones cortas, métodos de arrays</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anónima</strong></td>
+                        <td>Sin nombre, usada como argumento</td>
+                        <td>Callbacks de una sola vez, event listeners</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-card">
+            <h2>Parámetros y Valores de Retorno</h2>
+            
+            <h3>Parámetros</h3>
+            <p>Los <strong>parámetros</strong> son variables que recibe una función para trabajar con ellas.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Ejemplo con múltiples parámetros:</h4>
+                <code><span class="keyword">function</span> <span class="function-name">saludar</span>(nombre, edad) {
+    console.log(<span class="string">`Hola, me llamo ${nombre} y tengo ${edad} años`</span>);
+}
+
+<span class="function-name">saludar</span>(<span class="string">"María"</span>, <span class="number">20</span>);
+<span class="comment">// Imprime: Hola, me llamo María y tengo 20 años</span></code>
+            </div>
+
+            <h3>Valores de Retorno</h3>
+            <p>El <strong>return</strong> devuelve un valor al lugar donde se llamó la función.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">function</span> <span class="function-name">calcularArea</span>(base, altura) {
+    <span class="keyword">let</span> area = base * altura;
+    <span class="keyword">return</span> area;
+}
+
+<span class="keyword">let</span> resultado = <span class="function-name">calcularArea</span>(<span class="number">5</span>, <span class="number">10</span>);
+console.log(<span class="string">"El área es: "</span> + resultado); <span class="comment">// El área es: 50</span></code>
+            </div>
+
+           <div style="text-align: center; margin: 20px 0;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl_jAbfPivGhj0ldzA65PHgcJUCa2XEnIpSg&s" alt="Estructura de Funciones" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <p style="color: #999; font-size: 0.9em; margin-top: 10px; font-style: italic;">Diagrama: Estructura y componentes de una función</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2> Ejemplo Práctico Completo</h2>
+            
+            <div class="sintaxis-box">
+                <h4>Calculadora Simple:</h4>
+                <code><span class="comment">// Funciones para operaciones básicas</span>
+<span class="keyword">const</span> <span class="function-name">sumar</span> = (a, b) => a + b;
+<span class="keyword">const</span> <span class="function-name">restar</span> = (a, b) => a - b;
+<span class="keyword">const</span> <span class="function-name">multiplicar</span> = (a, b) => a * b;
+<span class="keyword">const</span> <span class="function-name">dividir</span> = (a, b) => b !== <span class="number">0</span> ? a / b : <span class="string">"Error: División por cero"</span>;
+
+<span class="comment">// Función principal que usa las otras funciones</span>
+<span class="keyword">function</span> <span class="function-name">calculadora</span>(operacion, num1, num2) {
+    <span class="keyword">switch</span>(operacion) {
+        <span class="keyword">case</span> <span class="string">"+"</span>:
+            <span class="keyword">return</span> <span class="function-name">sumar</span>(num1, num2);
+        <span class="keyword">case</span> <span class="string">"-"</span>:
+            <span class="keyword">return</span> <span class="function-name">restar</span>(num1, num2);
+        <span class="keyword">case</span> <span class="string">"*"</span>:
+            <span class="keyword">return</span> <span class="function-name">multiplicar</span>(num1, num2);
+        <span class="keyword">case</span> <span class="string">"/"</span>:
+            <span class="keyword">return</span> <span class="function-name">dividir</span>(num1, num2);
+        <span class="keyword">default</span>:
+            <span class="keyword">return</span> <span class="string">"Operación no válida"</span>;
+    }
+}
+
+<span class="comment">// Uso de la calculadora</span>
+console.log(<span class="function-name">calculadora</span>(<span class="string">"+"</span>, <span class="number">10</span>, <span class="number">5</span>));  <span class="comment">// 15</span>
+console.log(<span class="function-name">calculadora</span>(<span class="string">"-"</span>, <span class="number">10</span>, <span class="number">5</span>));  <span class="comment">// 5</span>
+console.log(<span class="function-name">calculadora</span>(<span class="string">"*"</span>, <span class="number">10</span>, <span class="number">5</span>));  <span class="comment">// 50</span>
+console.log(<span class="function-name">calculadora</span>(<span class="string">"/"</span>, <span class="number">10</span>, <span class="number">5</span>));  <span class="comment">// 2</span></code>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="video-section">
+                <h3>Ejemplos Prácticos (Video)</h3>
+                <div class="video-placeholder">
+                    AQUÍ VA EL LINK DEL VIDOE
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

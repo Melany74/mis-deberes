@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deber 3 - POO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFF5E1 50%, #E8E8E8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #FFB6C1, #FF9AB0);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .icon-title {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #4A4A4A;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .tag-tarea {
+            background-color: #FFB6C1;
+            color: white;
+        }
+
+        .objetivo-box {
+            background: linear-gradient(135deg, #FFF5E1, #FFE4E8);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #FFB6C1;
+            margin: 20px 0;
+        }
+
+        .objetivo-box h3 {
+            color: #FF6B8A;
+            margin-bottom: 10px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #4A4A4A;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFB6C1;
+        }
+
+        h3 {
+            color: #FF6B8A;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #FF6B8A;
+            margin: 15px 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .pillar-card {
+            background: linear-gradient(135deg, #FFE4E8, #FFF9E6);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .pillar-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .pillar-title {
+            color: #FF6B8A;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .pillar-description {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            display: block;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .keyword {
+            color: #ff79c6;
+        }
+
+        .string {
+            color: #f1fa8c;
+        }
+
+        .comment {
+            color: #6272a4;
+        }
+
+        .class-name {
+            color: #8be9fd;
+        }
+
+        .function-name {
+            color: #50fa7b;
+        }
+
+        .number {
+            color: #bd93f9;
+        }
+
+        .sintaxis-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #FFB6C1;
+        }
+
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-item {
+            background: #FFF9E6;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D4A574;
+        }
+
+        .comparison-item h4 {
+            color: #D4A574;
+            margin-bottom: 10px;
+        }
+
+        .video-section {
+            background: linear-gradient(135deg, #FFE4E8, #FFF5E1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .video-section h3 {
+            color: #FF6B8A;
+            margin-bottom: 15px;
+        }
+
+        .video-placeholder {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            border: 3px dashed #FFB6C1;
+            color: #999;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #FFF9E6;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #D4A574;
+            margin: 15px 0;
+        }
+
+        .highlight-box strong {
+            color: #D4A574;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-back">← Regresar al Inicio</a>
+
+    <div class="container">
+        <div class="header-section">
+            <div class="icon-title"></div>
+            <h1>Deber 3: Programación Orientada a Objetos</h1>
+            <div class="tags">
+            </div>
+            <div class="objetivo-box">
+                <h3>Objetivo</h3>
+                <p>Desarrollar una página web explicando los conceptos fundamentales de la Programación Orientada a Objetos para comprender los pilares de la POO.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>¿Qué es la Programación Orientada a Objetos (POO)?</h2>
+            <p>La <strong>Programación Orientada a Objetos (POO)</strong> es un paradigma de programación que organiza el código en <strong>objetos</strong> que contienen tanto datos (atributos) como comportamientos (métodos).</p>
+            
+            <p>Este enfoque permite:</p>
+            <ul>
+                <li><strong>Modelar el mundo real:</strong> Representar entidades reales como objetos en el código</li>
+                <li><strong>Reutilización de código:</strong> Crear componentes que pueden usarse en múltiples lugares</li>
+                <li><strong>Mantenibilidad:</strong> Código más organizado y fácil de modificar</li>
+                <li><strong>Escalabilidad:</strong> Facilita el crecimiento de aplicaciones complejas</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>Concepto clave:</strong> La POO se basa en modelar el software como una colección de objetos que interactúan entre sí, en lugar de una simple lista de instrucciones.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Los 4 Pilares de la POO</h2>
+            <p>La POO se fundamenta en cuatro principios esenciales que definen su estructura y funcionamiento:</p>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon"></div>
+                    <div class="pillar-title">Encapsulamiento</div>
+                    <p class="pillar-description">Ocultar los detalles internos de un objeto y exponer solo lo necesario</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"></div>
+                    <div class="pillar-title">Herencia</div>
+                    <p class="pillar-description">Crear nuevas clases basadas en clases existentes, heredando sus características</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"></div>
+                    <div class="pillar-title">Polimorfismo</div>
+                    <p class="pillar-description">Permitir que objetos de diferentes clases respondan al mismo mensaje de formas distintas</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"></div>
+                    <div class="pillar-title">Abstracción</div>
+                    <p class="pillar-description">Representar características esenciales sin incluir detalles complejos de implementación</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>1. Encapsulamiento</h2>
+            <p>El <strong>encapsulamiento</strong> es el mecanismo que agrupa datos y métodos relacionados en una unidad (objeto) y controla el acceso a ellos. Protege los datos internos de modificaciones no autorizadas.</p>
+
+            <h3>Características:</h3>
+            <ul>
+                <li>Oculta la implementación interna del objeto</li>
+                <li>Expone solo una interfaz pública para interactuar</li>
+                <li>Protege los datos mediante modificadores de acceso (público, privado, protegido)</li>
+                <li>Previene el acceso directo a los atributos desde fuera de la clase</li>
+            </ul>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">class</span> <span class="class-name">CuentaBancaria</span> {
+    <span class="comment">// Atributo privado (encapsulado)</span>
+    #saldo = 0;
+
+    <span class="keyword">constructor</span>(saldoInicial) {
+        <span class="keyword">this</span>.#saldo = saldoInicial;
+    }
+
+    <span class="comment">// Método público para acceder al saldo</span>
+    <span class="function-name">getSaldo</span>() {
+        <span class="keyword">return this</span>.#saldo;
+    }
+
+    <span class="comment">// Método público para depositar</span>
+    <span class="function-name">depositar</span>(cantidad) {
+        <span class="keyword">if</span> (cantidad > 0) {
+            <span class="keyword">this</span>.#saldo += cantidad;
+            <span class="keyword">return true</span>;
+        }
+        <span class="keyword">return false</span>;
+    }
+
+    <span class="comment">// Método público para retirar</span>
+    <span class="function-name">retirar</span>(cantidad) {
+        <span class="keyword">if</span> (cantidad > 0 && cantidad <= <span class="keyword">this</span>.#saldo) {
+            <span class="keyword">this</span>.#saldo -= cantidad;
+            <span class="keyword">return true</span>;
+        }
+        <span class="keyword">return false</span>;
+    }
+}
+
+<span class="comment">// Uso</span>
+<span class="keyword">const</span> cuenta = <span class="keyword">new</span> <span class="class-name">CuentaBancaria</span>(<span class="number">1000</span>);
+cuenta.<span class="function-name">depositar</span>(<span class="number">500</span>);
+console.log(cuenta.<span class="function-name">getSaldo</span>()); <span class="comment">// 1500</span></code>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>2. Herencia</h2>
+            <p>La <strong>herencia</strong> permite crear nuevas clases (clases hijas) basadas en clases existentes (clases padre), heredando sus atributos y métodos. Promueve la reutilización del código.</p>
+
+            <h3>Características:</h3>
+            <ul>
+                <li>La clase hija hereda atributos y métodos de la clase padre</li>
+                <li>Permite especializar comportamientos en las clases hijas</li>
+                <li>Establece relaciones "es un" (ejemplo: un Perro es un Animal)</li>
+                <li>Facilita la extensión del código sin modificar las clases existentes</li>
+            </ul>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="comment">// Clase padre</span>
+<span class="keyword">class</span> <span class="class-name">Animal</span> {
+    <span class="keyword">constructor</span>(nombre) {
+        <span class="keyword">this</span>.nombre = nombre;
+    }
+
+    <span class="function-name">hacerSonido</span>() {
+        console.log(<span class="string">`${<span class="keyword">this</span>.nombre} hace un sonido`</span>);
+    }
+}
+
+<span class="comment">// Clase hija que hereda de Animal</span>
+<span class="keyword">class</span> <span class="class-name">Perro</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="keyword">constructor</span>(nombre, raza) {
+        <span class="keyword">super</span>(nombre); <span class="comment">// Llama al constructor del padre</span>
+        <span class="keyword">this</span>.raza = raza;
+    }
+
+    <span class="comment">// Sobrescribe el método del padre</span>
+    <span class="function-name">hacerSonido</span>() {
+        console.log(<span class="string">`${<span class="keyword">this</span>.nombre} dice: ¡Guau!`</span>);
+    }
+
+    <span class="comment">// Método específico de Perro</span>
+    <span class="function-name">moverCola</span>() {
+        console.log(<span class="string">`${<span class="keyword">this</span>.nombre} mueve la cola feliz`</span>);
+    }
+}
+
+<span class="comment">// Uso</span>
+<span class="keyword">const</span> miPerro = <span class="keyword">new</span> <span class="class-name">Perro</span>(<span class="string">"Max"</span>, <span class="string">"Labrador"</span>);
+miPerro.<span class="function-name">hacerSonido</span>(); <span class="comment">// Max dice: ¡Guau!</span>
+miPerro.<span class="function-name">moverCola</span>();   <span class="comment">// Max mueve la cola feliz</span></code>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>3. Polimorfismo</h2>
+            <p>El <strong>polimorfismo</strong> permite que objetos de diferentes clases respondan de manera diferente al mismo mensaje o método. "Poli" significa muchas y "morfismo" significa formas.</p>
+
+            <h3>Características:</h3>
+            <ul>
+                <li>Una misma interfaz puede comportarse de diferentes formas</li>
+                <li>Permite tratar objetos de diferentes clases de manera uniforme</li>
+                <li>Facilita la extensibilidad del código</li>
+                <li>Se logra principalmente mediante la sobrescritura de métodos</li>
+            </ul>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">class</span> <span class="class-name">Figura</span> {
+    <span class="function-name">calcularArea</span>() {
+        <span class="keyword">return</span> <span class="number">0</span>;
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Rectangulo</span> <span class="keyword">extends</span> <span class="class-name">Figura</span> {
+    <span class="keyword">constructor</span>(base, altura) {
+        <span class="keyword">super</span>();
+        <span class="keyword">this</span>.base = base;
+        <span class="keyword">this</span>.altura = altura;
+    }
+
+    <span class="comment">// Implementación específica para Rectángulo</span>
+    <span class="function-name">calcularArea</span>() {
+        <span class="keyword">return this</span>.base * <span class="keyword">this</span>.altura;
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Circulo</span> <span class="keyword">extends</span> <span class="class-name">Figura</span> {
+    <span class="keyword">constructor</span>(radio) {
+        <span class="keyword">super</span>();
+        <span class="keyword">this</span>.radio = radio;
+    }
+
+    <span class="comment">// Implementación específica para Círculo</span>
+    <span class="function-name">calcularArea</span>() {
+        <span class="keyword">return</span> Math.PI * <span class="keyword">this</span>.radio ** <span class="number">2</span>;
+    }
+}
+
+<span class="comment">// Polimorfismo en acción</span>
+<span class="keyword">const</span> figuras = [
+    <span class="keyword">new</span> <span class="class-name">Rectangulo</span>(<span class="number">5</span>, <span class="number">3</span>),
+    <span class="keyword">new</span> <span class="class-name">Circulo</span>(<span class="number">4</span>)
+];
+
+figuras.<span class="function-name">forEach</span>(figura => {
+    console.log(<span class="string">`Área: ${figura.<span class="function-name">calcularArea</span>()}`</span>);
+});
+<span class="comment">// Cada figura calcula su área de forma diferente</span></code>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>4. Abstracción</h2>
+            <p>La <strong>abstracción</strong> consiste en representar las características esenciales de un objeto sin incluir los detalles complejos de implementación. Se enfoca en "qué hace" en lugar de "cómo lo hace".</p>
+
+            <h3>Características:</h3>
+            <ul>
+                <li>Oculta la complejidad interna y muestra solo lo necesario</li>
+                <li>Define interfaces y contratos que las clases deben cumplir</li>
+                <li>Permite trabajar con conceptos de alto nivel</li>
+                <li>Facilita el diseño y comprensión del sistema</li>
+            </ul>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="comment">// Clase abstracta (concepto)</span>
+<span class="keyword">class</span> <span class="class-name">Vehiculo</span> {
+    <span class="keyword">constructor</span>(marca, modelo) {
+        <span class="keyword">this</span>.marca = marca;
+        <span class="keyword">this</span>.modelo = modelo;
+    }
+
+    <span class="comment">// Método abstracto (debe ser implementado por clases hijas)</span>
+    <span class="function-name">arrancar</span>() {
+        <span class="keyword">throw new</span> <span class="class-name">Error</span>(<span class="string">"Método 'arrancar' debe ser implementado"</span>);
+    }
+
+    <span class="comment">// Método concreto</span>
+    <span class="function-name">mostrarInfo</span>() {
+        console.log(<span class="string">`${<span class="keyword">this</span>.marca} ${<span class="keyword">this</span>.modelo}`</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Auto</span> <span class="keyword">extends</span> <span class="class-name">Vehiculo</span> {
+    <span class="comment">// Implementa el método abstracto</span>
+    <span class="function-name">arrancar</span>() {
+        console.log(<span class="string">"Girando la llave... El auto arranca"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Moto</span> <span class="keyword">extends</span> <span class="class-name">Vehiculo</span> {
+    <span class="comment">// Implementa el método abstracto de forma diferente</span>
+    <span class="function-name">arrancar</span>() {
+        console.log(<span class="string">"Presionando el botón... La moto arranca"</span>);
+    }
+}
+
+<span class="comment">// Uso</span>
+<span class="keyword">const</span> miAuto = <span class="keyword">new</span> <span class="class-name">Auto</span>(<span class="string">"Toyota"</span>, <span class="string">"Corolla"</span>);
+miAuto.<span class="function-name">arrancar</span>(); <span class="comment">// Girando la llave...</span>
+
+<span class="keyword">const</span> miMoto = <span class="keyword">new</span> <span class="class-name">Moto</span>(<span class="string">"Honda"</span>, <span class="string">"CBR"</span>);
+miMoto.<span class="function-name">arrancar</span>(); <span class="comment">// Presionando el botón...</span></code>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Clases y Objetos</h2>
+            
+            <h3>¿Qué es una Clase?</h3>
+            <p>Una <strong>clase</strong> es una plantilla o molde que define las características (atributos) y comportamientos (métodos) que tendrán los objetos creados a partir de ella.</p>
+
+            <h3>¿Qué es un Objeto?</h3>
+            <p>Un <strong>objeto</strong> es una instancia de una clase. Es una entidad concreta creada a partir del molde que representa la clase.</p>
+
+            <div class="comparison-box">
+                <div class="comparison-item">
+                    <h4>Clase</h4>
+                    <ul style="margin-top: 10px;">
+                        <li>Es un modelo o plantilla</li>
+                        <li>Define estructura y comportamiento</li>
+                        <li>Es abstracta (no ocupa memoria)</li>
+                        <li>Ejemplo: Receta de pastel</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-item">
+                    <h4>Objeto</h4>
+                    <ul style="margin-top: 10px;">
+                        <li>Es una instancia concreta</li>
+                        <li>Tiene valores específicos</li>
+                        <li>Ocupa memoria</li>
+                        <li>Ejemplo: El pastel ya hecho</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo Completo:</h4>
+                <code><span class="comment">// CLASE: Plantilla para crear estudiantes</span>
+<span class="keyword">class</span> <span class="class-name">Estudiante</span> {
+    <span class="comment">// Constructor: inicializa los atributos</span>
+    <span class="keyword">constructor</span>(nombre, edad, carrera) {
+        <span class="keyword">this</span>.nombre = nombre;    <span class="comment">// Atributo</span>
+        <span class="keyword">this</span>.edad = edad;        <span class="comment">// Atributo</span>
+        <span class="keyword">this</span>.carrera = carrera;  <span class="comment">// Atributo</span>
+        <span class="keyword">this</span>.notas = [];        <span class="comment">// Atributo</span>
+    }
+
+    <span class="comment">// Método: comportamiento del estudiante</span>
+    <span class="function-name">agregarNota</span>(nota) {
+        <span class="keyword">this</span>.notas.<span class="function-name">push</span>(nota);
+    }
+
+    <span class="comment">// Método: calcular promedio</span>
+    <span class="function-name">calcularPromedio</span>() {
+        <span class="keyword">if</span> (<span class="keyword">this</span>.notas.length === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;
+        <span class="keyword">const</span> suma = <span class="keyword">this</span>.notas.<span class="function-name">reduce</span>((a, b) => a + b, <span class="number">0</span>);
+        <span class="keyword">return</span> suma / <span class="keyword">this</span>.notas.length;
+    }
+
+    <span class="comment">// Método: mostrar información</span>
+    <span class="function-name">mostrarInfo</span>() {
+        console.log(<span class="string">`Estudiante: ${<span class="keyword">this</span>.nombre}`</span>);
+        console.log(<span class="string">`Edad: ${<span class="keyword">this</span>.edad}`</span>);
+        console.log(<span class="string">`Carrera: ${<span class="keyword">this</span>.carrera}`</span>);
+        console.log(<span class="string">`Promedio: ${<span class="keyword">this</span>.<span class="function-name">calcularPromedio</span>()}`</span>);
+    }
+}
+
+<span class="comment">// OBJETOS: Instancias concretas de la clase Estudiante</span>
+<span class="keyword">const</span> estudiante1 = <span class="keyword">new</span> <span class="class-name">Estudiante</span>(<span class="string">"María García"</span>, <span class="number">20</span>, <span class="string">"Ingeniería"</span>);
+estudiante1.<span class="function-name">agregarNota</span>(<span class="number">85</span>);
+estudiante1.<span class="function-name">agregarNota</span>(<span class="number">90</span>);
+estudiante1.<span class="function-name">agregarNota</span>(<span class="number">88</span>);
+
+<span class="keyword">const</span> estudiante2 = <span class="keyword">new</span> <span class="class-name">Estudiante</span>(<span class="string">"Juan Pérez"</span>, <span class="number">22</span>, <span class="string">"Medicina"</span>);
+
+            </div>
+        </div>
+
+ 
+        <div class="content-card">
+            <div class="video-section">
+                <h3>Participación en Clase (Video)</h3>
+                <div class="video-placeholder">
+                    AQUÍ VA EL LINK DEL DRIVE DONDE SUBISTE EL VIDEO DE TU PARTICIPACIÓN EN CLASE
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deber 1 - Sentencias de Control</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFF5E1 50%, #E8E8E8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #FFB6C1, #FF9AB0);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .icon-title {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #4A4A4A;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .tag-tarea {
+            background-color: #FFB6C1;
+            color: white;
+        }
+
+        .objetivo-box {
+            background: linear-gradient(135deg, #FFF5E1, #FFE4E8);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #FFB6C1;
+            margin: 20px 0;
+        }
+
+        .objetivo-box h3 {
+            color: #FF6B8A;
+            margin-bottom: 10px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #4A4A4A;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFB6C1;
+        }
+
+        h3 {
+            color: #FF6B8A;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .sintaxis-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #FFB6C1;
+        }
+
+        .sintaxis-box h4 {
+            color: #FF6B8A;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            display: block;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .keyword {
+            color: #ff79c6;
+        }
+
+        .string {
+            color: #f1fa8c;
+        }
+
+        .comment {
+            color: #6272a4;
+        }
+
+        .video-section {
+            background: linear-gradient(135deg, #FFE4E8, #FFF5E1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .video-section h3 {
+            color: #FF6B8A;
+            margin-bottom: 15px;
+        }
+
+        .video-placeholder {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            border: 3px dashed #FFB6C1;
+            color: #999;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-back">← Regresar al Inicio</a>
+
+    <div class="container">
+        <div class="header-section">
+            <div class="icon-title"></div>
+            <h1>Deber 1: Sentencias de Control</h1>
+            <div class="objetivo-box">
+                <h3>Objetivo</h3>
+                <p>Desarrollar una página web explicando las sentencias de control, su sintaxis y conceptos fundamentales para comprender y aplicar estructuras de control en programación.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>¿Qué son las Sentencias de Control?</h2>
+            <p>Las <strong>sentencias de control</strong> son estructuras fundamentales en programación que permiten controlar el flujo de ejecución de un programa. Estas determinan qué código se ejecuta, cuándo se ejecuta y cuántas veces se repite.</p>
+            
+            <p>Existen dos tipos principales de sentencias de control:</p>
+            <ul>
+                <li><strong>Sentencias Condicionales:</strong> Permiten ejecutar diferentes bloques de código según se cumplan o no ciertas condiciones (if, else, switch).</li>
+                <li><strong>Sentencias de Repetición (Bucles):</strong> Permiten ejecutar un bloque de código múltiples veces (for, while, do-while).</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2>Sentencias Condicionales</h2>
+            
+            <h3>1. if / else / else if</h3>
+            <p>La sentencia <strong>if</strong> evalúa una condición y ejecuta un bloque de código si esta es verdadera. Puede complementarse con <strong>else</strong> y <strong>else if</strong> para manejar múltiples casos.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Sintaxis:</h4>
+                <code><span class="keyword">if</span> (condición) {
+    <span class="comment">// código si la condición es verdadera</span>
+} <span class="keyword">else if</span> (otraCondición) {
+    <span class="comment">// código si la segunda condición es verdadera</span>
+} <span class="keyword">else</span> {
+    <span class="comment">// código si ninguna condición anterior es verdadera</span>
+}</code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">let</span> edad = 18;
+
+<span class="keyword">if</span> (edad < 18) {
+    console.log(<span class="string">"Eres menor de edad"</span>);
+} <span class="keyword">else if</span> (edad === 18) {
+    console.log(<span class="string">"Acabas de cumplir la mayoría de edad"</span>);
+} <span class="keyword">else</span> {
+    console.log(<span class="string">"Eres mayor de edad"</span>);
+}</code>
+            </div>
+
+            <h3>2. switch</h3>
+            <p>La sentencia <strong>switch</strong> evalúa una expresión y ejecuta el código del caso que coincida con el valor de la expresión. Es útil cuando se tienen múltiples valores específicos a comparar.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Sintaxis:</h4>
+                <code><span class="keyword">switch</span> (expresión) {
+    <span class="keyword">case</span> valor1:
+        <span class="comment">// código para valor1</span>
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> valor2:
+        <span class="comment">// código para valor2</span>
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        <span class="comment">// código si ningún caso coincide</span>
+}</code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">let</span> dia = 3;
+<span class="keyword">let</span> nombreDia;
+
+<span class="keyword">switch</span> (dia) {
+    <span class="keyword">case</span> 1:
+        nombreDia = <span class="string">"Lunes"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> 2:
+        nombreDia = <span class="string">"Martes"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> 3:
+        nombreDia = <span class="string">"Miércoles"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        nombreDia = <span class="string">"Día no válido"</span>;
+}
+console.log(nombreDia); <span class="comment">// Imprime: Miércoles</span></code>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Sentencias de Repetición (Bucles)</h2>
+            
+            <h3>3. for</h3>
+            <p>El bucle <strong>for</strong> se utiliza cuando sabemos exactamente cuántas veces queremos repetir un bloque de código. Es ideal para iterar sobre rangos numéricos o elementos de un array.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Sintaxis:</h4>
+                <code><span class="keyword">for</span> (inicialización; condición; incremento) {
+    <span class="comment">// código a repetir</span>
+}</code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="comment">// Imprimir números del 1 al 5</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = 1; i <= 5; i++) {
+    console.log(<span class="string">"Número: "</span> + i);
+}
+
+<span class="comment">// Salida:</span>
+<span class="comment">// Número: 1</span>
+<span class="comment">// Número: 2</span>
+<span class="comment">// Número: 3</span>
+<span class="comment">// Número: 4</span>
+<span class="comment">// Número: 5</span></code>
+            </div>
+
+            <h3>4. while</h3>
+            <p>El bucle <strong>while</strong> ejecuta un bloque de código mientras una condición sea verdadera. La condición se evalúa antes de cada iteración.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Sintaxis:</h4>
+                <code><span class="keyword">while</span> (condición) {
+    <span class="comment">// código a repetir mientras la condición sea verdadera</span>
+}</code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">let</span> contador = 1;
+
+<span class="keyword">while</span> (contador <= 3) {
+    console.log(<span class="string">"Iteración: "</span> + contador);
+    contador++;
+}
+
+<span class="comment">// Salida:</span>
+<span class="comment">// Iteración: 1</span>
+<span class="comment">// Iteración: 2</span>
+<span class="comment">// Iteración: 3</span></code>
+            </div>
+
+            <h3>5. do-while</h3>
+            <p>El bucle <strong>do-while</strong> es similar al while, pero garantiza que el código se ejecute al menos una vez, ya que la condición se evalúa después de cada iteración.</p>
+            
+            <div class="sintaxis-box">
+                <h4>Sintaxis:</h4>
+                <code><span class="keyword">do</span> {
+    <span class="comment">// código a repetir</span>
+} <span class="keyword">while</span> (condición);</code>
+            </div>
+
+            <div class="sintaxis-box">
+                <h4>Ejemplo:</h4>
+                <code><span class="keyword">let</span> numero = 0;
+
+<span class="keyword">do</span> {
+    console.log(<span class="string">"El número es: "</span> + numero);
+    numero++;
+} <span class="keyword">while</span> (numero < 3);
+
+<span class="comment">// Salida:</span>
+<span class="comment">// El número es: 0</span>
+<span class="comment">// El número es: 1</span>
+<span class="comment">// El número es: 2</span></code>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="video-section">
+                <h3>Ejercicios Prácticos (Video)</h3>
+                <div class="video-placeholder">
+                    AQUÍ VA EL LINK 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
