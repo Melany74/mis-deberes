@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Final - Proyecto de Desarrollo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFF5E1 50%, #E8E8E8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #FFB6C1, #FF9AB0);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .icon-title {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #4A4A4A;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            background-color: #E8E8E8;
+            color: #4A4A4A;
+        }
+
+        .objetivo-box {
+            background: linear-gradient(135deg, #FFF5E1, #FFE4E8);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #FFB6C1;
+            margin: 20px 0;
+        }
+
+        .objetivo-box h3 {
+            color: #FF6B8A;
+            margin-bottom: 10px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #4A4A4A;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFB6C1;
+        }
+
+        h3 {
+            color: #FF6B8A;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .fase-number {
+            background: linear-gradient(135deg, #FFB6C1, #FF9AB0);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+        }
+
+        .pregunta-box {
+            background: linear-gradient(135deg, #FFF9E6, #FFE4E8);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 4px solid #D4A574;
+        }
+
+        .pregunta-titulo {
+            color: #D4A574;
+            font-weight: 600;
+            font-size: 1.05em;
+            margin-bottom: 10px;
+        }
+
+        .respuesta-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 2px solid #e8e8e8;
+        }
+
+        .respuesta-box p {
+            color: #333;
+            font-style: normal;
+        }
+
+        .evidencias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .evidencia-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px dashed #ccc;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .evidencia-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .evidencia-title {
+            color: #4A4A4A;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .evidencia-desc {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .figma-box {
+            background: linear-gradient(135deg, #FFE4E8, #FFF5E1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .figma-link {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px dashed #FFB6C1;
+            margin-top: 15px;
+        }
+
+        .figma-link input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #FFB6C1;
+            border-radius: 8px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .checklist {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #FFB6C1;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFB6C1;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+
+            .evidencias-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-back">← Regresar al Inicio</a>
+
+    <div class="container">
+        <div class="header-section">
+            <div class="icon-title">🏆</div>
+            <h1>Examen Final: Proyecto de Desarrollo de Aplicación</h1>
+            <div class="tags">
+                <span class="tag">EXAMEN FINAL</span>
+            </div>
+            <div class="objetivo-box">
+                <h3>🎯 Objetivo</h3>
+                <p>Aplicar todo el proceso de desarrollo de software, desde el contacto con el cliente hasta la aprobación del diseño en Figma, integrando todos los conocimientos en un proyecto completo.</p>
+            </div>
+        </div>
+
+        <!-- FASE 1 -->
+        <div class="content-card">
+            <div class="fase-number">1</div>
+            <h2>📞 Fase 1: Contacto Inicial con el Cliente</h2>
+            <p>En esta fase se establece el primer contacto con el cliente para entender su necesidad y el problema que desea resolver.</p>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Quién es el cliente?</div>
+                <div class="respuesta-box">
+                    <p>Edwin Josue - Cajero de Oxxo</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Cuándo y cómo fue la primera reunión?</div>
+                <div class="respuesta-box">
+                    <p>Día 29/12/2025 - Reunión virtual - Duración: 45 minutos</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Qué necesita el cliente y por qué?</div>
+                <div class="respuesta-box">
+                    <p>El cliente necesita un sistema digital para gestionar el inventario porque actualmente lo realiza de forma manual, lo cual es lento, propenso a errores y dificulta el control de stock. Requiere automatizar el registro de productos, entradas y salidas para mejorar la eficiencia operativa y tener información actualizada en tiempo real.</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Qué preguntas le realize para entender mejor el problema?</div>
+                <div class="respuesta-box">
+                    <p>1. ¿Qué tipo de productos maneja en su inventario?<br>
+                    2. ¿Cuántos productos aproximadamente maneja?<br>
+                    3. ¿Qué información registra actualmente?<br>
+                    4. ¿Cuántas personas usarán el sistema?<br>
+                    5. ¿Necesita controlar entradas y salidas de productos?<br>
+                    6. ¿Requiere alertas cuando un producto está por agotarse?<br>
+                    7. ¿Desde qué dispositivos accederá? (computadora, tablet, celular)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 2 -->
+        <div class="content-card">
+            <div class="fase-number">2</div>
+            <h2>📋 Fase 2: Levantamiento de Requisitos</h2>
+            <p>Aquí se documentan todos los requisitos funcionales y no funcionales del sistema.</p>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Quiénes son los usuarios del sistema?</div>
+                <div class="respuesta-box">
+                    <p><strong>Cajeros/Empleados:</strong> Registran ventas y consultan stock disponible<br><br>
+                    <strong>Encargado de tienda:</strong> Gestiona entradas de productos, actualiza inventario y genera reportes<br><br>
+                    <strong>Administrador del sistema:</strong> Gestiona usuarios, configura el sistema y supervisa operaciones generales</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Cuáles son las funciones principales del sistema?</div>
+                <div class="respuesta-box">
+                    <p>1. <strong>Registro de productos:</strong> Agregar, editar y eliminar productos del catálogo<br>
+                    2. <strong>Control de stock:</strong> Visualizar cantidades disponibles en tiempo real<br>
+                    3. <strong>Registro de entradas:</strong> Documentar la recepción de mercancía nueva<br>
+                    4. <strong>Registro de salidas:</strong> Registrar ventas y mermas<br>
+                    5. <strong>Alertas de stock bajo:</strong> Notificaciones cuando productos están por agotarse<br>
+                    6. <strong>Búsqueda de productos:</strong> Localizar productos rápidamente por nombre o código</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Cuáles son las funciones secundarias?</div>
+                <div class="respuesta-box">
+                    <p>- Generar reportes de inventario (diarios, semanales, mensuales)<br>
+                    - Historial de movimientos de productos<br>
+                    - Gestión de categorías de productos<br>
+                    - Registro de proveedores<br>
+                    - Dashboard con estadísticas visuales<br>
+                    - Sistema de respaldo de datos</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Qué pantallas necesita el sistema?</div>
+                <div class="respuesta-box">
+                    <p>1. Login/Inicio de sesión<br>
+                    2. Dashboard principal (resumen de inventario)<br>
+                    3. Listado de productos<br>
+                    4. Formulario de agregar/editar producto<br>
+                    5. Registro de entrada de mercancía<br>
+                    6. Registro de salida de mercancía<br>
+                    7. Alertas y notificaciones<br>
+                    8. Reportes e historial<br>
+                    9. Gestión de usuarios<br>
+                    10. Configuración del sistema</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Qué datos se guardarán en el sistema?</div>
+                <div class="respuesta-box">
+                    <p><strong>Productos:</strong> Código de barras, nombre, descripción, categoría, precio de venta, precio de compra, stock actual, stock mínimo, proveedor, fecha de registro<br><br>
+                    <strong>Movimientos:</strong> Tipo de movimiento (entrada/salida), fecha y hora, cantidad, producto afectado, usuario que realizó el movimiento, comentarios<br><br>
+                    <strong>Usuarios:</strong> Nombre, usuario, contraseña (encriptada), rol, correo electrónico, fecha de creación<br><br>
+                    <strong>Proveedores:</strong> Nombre, contacto, teléfono, dirección</p>
+        
+  
+            </div>
+     </ul>
+            </div>
+        </div>
+           
+        <!-- FASE 3 -->
+        <div class="content-card">
+            <div class="fase-number">3</div>
+            <h2>🔍 Fase 3: Análisis del Problema</h2>
+            <p>Se analizan los procesos y se crean diagramas para visualizar el funcionamiento del sistema.</p>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Cuáles son los procesos principales del sistema?</div>
+                <div class="respuesta-box">
+                    <p><strong>Proceso 1 - Registro de producto nuevo:</strong><br>
+                    1. Usuario accede a "Agregar producto"<br>
+                    2. Ingresa datos del producto (nombre, código, precio, stock inicial)<br>
+                    3. Sistema valida que no exista código duplicado<br>
+                    4. Sistema guarda el producto<br>
+                    5. Producto aparece en el inventario<br><br>
+                    
+                    <strong>Proceso 2 - Entrada de mercancía:</strong><br>
+                    1. Usuario selecciona "Registrar entrada"<br>
+                    2. Busca o escanea el producto<br>
+                    3. Ingresa cantidad recibida<br>
+                    4. Sistema actualiza stock sumando la cantidad<br>
+                    5. Se registra el movimiento en el historial<br><br>
+                    
+                    <strong>Proceso 3 - Venta/Salida de producto:</strong><br>
+                    1. Usuario registra venta<br>
+                    2. Busca o escanea el producto<br>
+                    3. Ingresa cantidad vendida<br>
+                    4. Sistema verifica que haya stock suficiente<br>
+                    5. Sistema reduce el stock<br>
+                    6. Si stock queda bajo el mínimo, genera alerta</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Cuáles son las reglas de negocio?</div>
+                <div class="respuesta-box">
+                    <p>1. <strong>Stock no puede ser negativo:</strong> El sistema no permite registrar salidas mayores al stock disponible<br>
+                    2. <strong>Códigos únicos:</strong> No pueden existir dos productos con el mismo código de barras<br>
+                    3. <strong>Alertas automáticas:</strong> Cuando un producto llega al stock mínimo, se genera una alerta automática<br>
+                    4. <strong>Permisos por rol:</strong> Solo el encargado y administrador pueden eliminar productos o editar precios<br>
+                    5. <strong>Registro de auditoría:</strong> Todo movimiento debe quedar registrado con usuario, fecha y hora<br>
+                    6. <strong>Precios válidos:</strong> Los precios deben ser mayores a cero<br>
+                    7. <strong>Stock mínimo:</strong> Cada producto debe tener definido un stock mínimo de seguridad<br>
+                    8. <strong>Sesión segura:</strong> Después de 30 minutos de inactividad, el sistema cierra sesión automáticamente</p>
+                </div>
+            </div>
+
+            <h3>📊 Diagramas de Flujo</h3>
+            <div class="evidencias-grid">
+                <div class="evidencia-card">
+                    <div class="evidencia-icon"></div>
+                    <div class="evidencia-title">Diagrama de Flujo 1</div>
+                    <p class="evidencia-desc">imagen del diagrama de flujo principal</p>
+                </div>
+                <div class="evidencia-card">
+                    <div class="evidencia-icon"></div>
+                    <div class="evidencia-title">Diagrama de Flujo 2</div>
+                    <p class="evidencia-desc">diagramas de procesos secundarios</p>
+                </div>
+            </div>
+
+            <h3>👤 Casos de Uso</h3>
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ Describe los casos de uso principales</div>
+                <div class="respuesta-box">
+                    <p><strong>Caso de Uso 1 - Iniciar Sesión</strong><br>
+                    Actor: Cualquier usuario del sistema<br>
+                    Precondición: Tener cuenta registrada<br>
+                    Flujo: 1) Usuario ingresa credenciales, 2) Sistema valida datos, 3) Sistema carga el rol del usuario, 4) Usuario accede al dashboard<br><br>
+                    
+                    <strong>Caso de Uso 2 - Registrar Producto Nuevo</strong><br>
+                    Actor: Encargado o Administrador<br>
+                    Precondición: Estar autenticado y tener permisos<br>
+                    Flujo: 1) Usuario selecciona "Agregar producto", 2) Completa formulario, 3) Sistema valida datos, 4) Sistema guarda producto, 5) Producto aparece en lista<br><br>
+                    
+                    <strong>Caso de Uso 3 - Consultar Stock</strong><br>
+                    Actor: Cajero, Encargado o Administrador<br>
+                    Precondición: Estar autenticado<br>
+                    Flujo: 1) Usuario busca producto, 2) Sistema muestra información del stock, 3) Usuario visualiza cantidad disponible<br><br>
+                    
+                    <strong>Caso de Uso 4 - Registrar Salida de Producto</strong><br>
+                    Actor: Cajero, Encargado o Administrador<br>
+                    Precondición: Producto debe existir y tener stock suficiente<br>
+                    Flujo: 1) Usuario selecciona producto, 2) Ingresa cantidad, 3) Sistema valida stock, 4) Sistema actualiza inventario, 5) Sistema registra movimiento</p>
+                </div>
+            </div>
+
+            <div class="evidencias-grid">
+                <div class="evidencia-card">
+                    <div class="evidencia-icon">🎯</div>
+                    <div class="evidencia-title">Diagrama de Casos de Uso</div>
+                    <p class="evidencia-desc">diagrama de casos de uso</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 4 -->
+        <div class="content-card">
+            <div class="fase-number">4</div>
+            <h2>🎨 Fase 4: Diseño de la Solución</h2>
+            <p>Se crea prototipo visual del sistema en Figma.</p>
+
+            <h3>✏️ Bocetos con Figma</h3>
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓inicial</div>
+                <div class="respuesta-box">
+                    <p>Boceto de las pantallas principales del sistema:<br><br>
+                    
+                    <strong>Dashboard:</strong> Diseñé una vista con tarjetas que muestran métricas clave (total de productos, productos con stock bajo, movimientos del día) y una tabla con los últimos productos registrados.<br><br>
+                    
+                    <strong>Gestión de productos:</strong> Boceto de una tabla con filtros de búsqueda, botones de acción (agregar, editar, eliminar) y vista de detalles de cada producto.<br><br>
+                    
+                    <strong>Registro de movimientos:</strong> Pantalla simple con formulario para seleccionar producto, ingresar cantidad y tipo de movimiento (entrada/salida).<br><br>
+                    
+                    La organización de la información priorizó la facilidad de acceso rápido a las funciones más usadas, con menú lateral para navegación y diseño responsive para tablets y móviles.</p>
+                </div>
+            </div>
+
+            <div class="evidencias-grid">
+                <div class="evidencia-card">
+                    <div class="evidencia-icon"></div>
+                    <p class="evidencia-desc">Se Agrega imágenes de los bocetos</p>
+                </div>
+            </div>
+
+            <h3>🎨 Prototipos en Figma</h3>
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Qué elementos de diseño utilize?</div>
+                <div class="respuesta-box">
+                    <p><strong>Colores:</strong> Paleta profesional con azul oscuro (#1E3A8A) como color principal para transmitir confianza, verde (#10B981) para indicadores positivos y stock disponible, rojo (#EF4444) para alertas de stock bajo, y gris claro (#F3F4F6) para fondos.<br><br>
+                    
+                    <strong>Tipografía:</strong> Inter como fuente principal por su excelente legibilidad en pantallas digitales, usando pesos 400 para texto normal y 600 para títulos.<br><br>
+                    
+                    <strong>Botones:</strong> Estilo moderno con bordes redondeados (8px radius), estados hover con efecto de elevación, y colores según la acción (azul para primarios, rojo para eliminar, verde para confirmar).<br><br>
+                    
+                    <strong>Iconos:</strong> Set de iconos de Lucide Icons para mantener consistencia visual en todo el sistema.<br><br>
+                    
+                    <strong>Espaciado:</strong> Sistema de 8px grid para mantener consistencia en márgenes y paddings.</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Cuántas pantallas diseñaste?</div>
+                <div class="respuesta-box">
+                    <p>Diseñé un total de <strong>10 pantallas principales</strong> en Figma:<br>
+                    1. Login / Inicio de sesión<br>
+                    2. Dashboard principal<br>
+                    3. Inventario - Lista de productos<br>
+                    4. Agregar nuevo producto<br>
+                    5. Editar producto existente<br>
+                    6. Registrar entrada de mercancía<br>
+                    7. Registrar salida de mercancía<br>
+                    8. Alertas y notificaciones<br>
+                    9. Historial de movimientos<br>
+                    10. Gestión de usuarios (solo para administrador)<br><br>
+                    
+                    Además, incluí variantes para estados móviles (responsive) de las pantallas más importantes.</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Qué interacciones y animaciones incluiste?</div>
+                <div class="respuesta-box">
+                    <p><strong>Navegación:</strong> Conexiones entre todas las pantallas mediante el menú lateral y botones de acción. Flujo completo desde login hasta las funciones principales.<br><br>
+                    
+                    <strong>Efectos hover:</strong> Cambios de color y elevación en botones cuando el usuario pasa el cursor sobre ellos.<br><br>
+                    
+                    <strong>Transiciones:</strong> Animaciones suaves (ease-in-out 300ms) al cambiar entre pantallas para una experiencia más fluida.<br><br>
+                    
+                    <strong>Modales:</strong> Ventanas emergentes para confirmar acciones importantes como eliminar productos, con overlay oscuro.<br><br>
+                    
+                    <strong>Estados de formularios:</strong> Validación visual en tiempo real con cambios de color en campos (verde para válido, rojo para error).<br><br>
+                    
+                    <strong>Notificaciones toast:</strong> Mensajes de confirmación que aparecen temporalmente después de acciones exitosas.</p>
+                </div>
+            </div>
+
+            <h3>🏗️ Arquitectura del Sistema</h3>
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ Describe la arquitectura técnica planteada</div>
+                <div class="respuesta-box">
+                    <p><strong>Tipo de aplicación:</strong> Aplicación web responsive (Progressive Web App - PWA) accesible desde cualquier navegador y dispositivo.<br><br>
+                    
+                    <strong>Frontend:</strong> React con TypeScript para crear una interfaz dinámica e interactiva. Tailwind CSS para estilos rápidos y consistentes.<br><br>
+                    
+                    <strong>Backend:</strong> Node.js con Express para crear una API REST que maneje las peticiones del frontend.<br><br>
+                    
+                    <strong>Base de datos:</strong> PostgreSQL para almacenar productos, movimientos, usuarios y proveedores de forma estructurada y relacional.<br><br>
+                    
+                    <strong>Autenticación:</strong> JWT (JSON Web Tokens) para manejar sesiones de usuario de forma segura.<br><br>
+                    
+                    <strong>Hosting:</strong> Frontend en Vercel/Netlify, Backend y BD en Railway o Render (servicios gratuitos o económicos).<br><br>
+                    
+                    <strong>Arquitectura:</strong> Cliente-Servidor con arquitectura de 3 capas (Presentación, Lógica de Negocio, Datos).</p>
+                </div>
+            </div>
+        </div>
+
+       <!-- ENLACE FIGMA -->
+        <div class="content-card">
+            <div class="figma-box">
+                <h3>🔗 Enlace al Proyecto de Figma</h3>
+                <p style="color: #666; margin: 15px 0;">Comparte el enlace público de tu diseño en Figma</p>
+                <div class="figma-link">
+                    <input type="text" placeholder="enlace del proyecto de Figma" value="">
+                </div>
+            </div>
+        </div>
+
+        <!-- EVIDENCIAS DE APROBACIÓN -->
+        <div class="content-card">
+            <h2>✅ Evidencias de Aprobación del Cliente</h2>
+            <p>Documenta la aprobación del cliente con capturas de pantalla, correos o mensajes.</p>
+
+            <div class="evidencias-grid">
+                <div class="evidencia-card">
+                    <div class="evidencia-icon">📧</div>
+                    <div class="evidencia-title">Correos de Aprobación</div>
+                </div>
+
+                <div class="evidencia-card">
+                    <div class="evidencia-icon">💬</div>
+                    <div class="evidencia-title">Mensajes/Chat</div>
+                </div>
+
+                <div class="evidencia-card">
+                    <div class="evidencia-icon">📸</div>
+                    <div class="evidencia-title">Reunión de Aprobación</div>
+                </div>
+
+               
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Cómo reaccionó el cliente al ver el diseño?</div>
+                <div class="respuesta-box">
+                    <p style="color: #999; font-style: italic;">...</p>
+                </div>
+            </div>
+
+            <div class="pregunta-box">
+                <div class="pregunta-titulo">❓ ¿Hubo cambios o iteraciones en el diseño?</div>
+                <div class="respuesta-box">
+                    <p style="color: #999; font-style: italic;">...</p>
+                </div>
+            </div>
+       
+    </div>
+</body>
+</html>

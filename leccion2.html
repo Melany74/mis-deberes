@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 2 - Figma</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFF5E1 50%, #E8E8E8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #FFB6C1, #FF9AB0);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .icon-title {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #4A4A4A;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .tag-evaluacion {
+            background-color: #FFF5E1;
+            color: #8B7355;
+        }
+
+        .objetivo-box {
+            background: linear-gradient(135deg, #FFF5E1, #FFE4E8);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #FFB6C1;
+            margin: 20px 0;
+        }
+
+        .objetivo-box h3 {
+            color: #FF6B8A;
+            margin-bottom: 10px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #4A4A4A;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FFB6C1;
+        }
+
+        h3 {
+            color: #FF6B8A;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #D4A574;
+            margin: 15px 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .herramienta-box {
+            background: linear-gradient(135deg, #FFF9E6, #FFE4E8);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #D4A574;
+        }
+
+        .herramienta-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .herramienta-icon {
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .herramienta-titulo {
+            flex: 1;
+        }
+
+        .herramienta-titulo h4 {
+            margin: 0;
+            color: #D4A574;
+        }
+
+        .atajo {
+            background: #4A4A4A;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .info-label {
+            color: #FF6B8A;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .info-text {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            padding: 80px 40px;
+            border-radius: 15px;
+            text-align: center;
+            color: #999;
+            font-size: 1em;
+            font-weight: 600;
+            margin: 15px 0;
+            border: 2px dashed #ccc;
+        }
+
+        .ejemplo-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #50fa7b;
+        }
+
+        .ejemplo-box h5 {
+            color: #50fa7b;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .comandos-table {
+            width: 100%;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .comandos-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comandos-table th {
+            background: #FFB6C1;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comandos-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .comandos-table tr:hover {
+            background: #FFF5E1;
+        }
+
+        .key {
+            background: #4A4A4A;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .tips-box {
+            background: #FFE4E8;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #FF6B8A;
+            margin: 15px 0;
+        }
+
+        .tips-box h4 {
+            color: #FF6B8A;
+            margin-top: 0;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .componentes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .componente-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .componente-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .componente-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .prototipo-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .step {
+            background: #FFF9E6;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #D4A574;
+        }
+
+        .step-number {
+            background: #D4A574;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .herramienta-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-back">← Regresar al Inicio</a>
+
+    <div class="container">
+        <div class="header-section">
+            <div class="icon-title">🎨</div>
+            <h1>Lección 2: Figma - Herramientas de Diseño</h1>
+            <div class="tags">
+                <span class="tag tag-evaluacion">EVALUACIÓN</span>
+            </div>
+            <div class="objetivo-box">
+                <h3>🎯 Objetivo</h3>
+                <p>Crear una página web documentando los comandos más utilizados en Figma para el diseño de interfaces y dominar las herramientas esenciales de Figma para UI/UX.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 1: SELECCIÓN Y MANIPULACIÓN -->
+        <div class="content-card">
+            <h2>🖱️ 1. Herramientas de Selección y Manipulación</h2>
+            
+            <!-- Move Tool -->
+            <div class="herramienta-box">
+                <div class="herramienta-header">
+                    <div class="herramienta-icon">↖️</div>
+                    <div class="herramienta-titulo">
+                        <h4>Move Tool (Herramienta de Mover)</h4>
+                    </div>
+                    <span class="atajo">V</span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">¿Qué hace?</div>
+                        <div class="info-text">Permite seleccionar, mover y redimensionar objetos en el canvas.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">¿Cuándo usarlo?</div>
+                        <div class="info-text">Es la herramienta principal para manipular elementos. Úsala para mover objetos, cambiar su tamaño o seleccionar múltiples elementos.</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder">
+                    CAPTURA DE PANTALLA: Move Tool en acción
+                </div>
+
+                <div class="ejemplo-box">
+                    <h5>💡 Ejemplo Práctico</h5>
+                    <p>Para mover un botón en tu diseño: Presiona <span class="key">V</span>, haz clic en el botón y arrástralo a la nueva posición. Mantén <span class="key">Shift</span> para moverlo en línea recta.</p>
+                </div>
+            </div>
+
+            <!-- Scale Tool -->
+            <div class="herramienta-box">
+                <div class="herramienta-header">
+                    <div class="herramienta-icon">⇲</div>
+                    <div class="herramienta-titulo">
+                        <h4>Scale Tool (Herramienta de Escala)</h4>
+                    </div>
+                    <span class="atajo">K</span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">¿Qué hace?</div>
+                        <div class="info-text">Escala objetos manteniendo las proporciones y propiedades como bordes redondeados.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">¿Cuándo usarlo?</div>
+                        <div class="info-text">Cuando necesites redimensionar elementos sin distorsionar sus propiedades originales.</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder">
+                    CAPTURA DE PANTALLA: Scale Tool comparado con resize normal
+                </div>
+
+                <div class="ejemplo-box">
+                    <h5>💡 Ejemplo Práctico</h5>
+                    <p>Para escalar un ícono sin perder calidad: Presiona <span class="key">K</span>, selecciona el ícono y arrastra desde las esquinas. Los bordes redondeados se mantendrán proporcionales.</p>
+                </div>
+            </div>
+
+            <!-- Frame Tool -->
+            <div class="herramienta-box">
+                <div class="herramienta-header">
+                    <div class="herramienta-icon">🖼️</div>
+                    <div class="herramienta-titulo">
+                        <h4>Frame Tool (Herramienta de Marco)</h4>
+                    </div>
+                    <span class="atajo">F</span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">¿Qué hace?</div>
+                        <div class="info-text">Crea contenedores rectangulares que funcionan como artboards o secciones de diseño.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">¿Cuándo usarlo?</div>
+                        <div class="info-text">Para crear pantallas, secciones de una página web, o agrupar elementos relacionados con auto-layout.</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder">
+                    CAPTURA DE PANTALLA: Frames organizando una interfaz
+                </div>
+
+                <div class="ejemplo-box">
+                    <h5>💡 Ejemplo Práctico</h5>
+                    <p>Para crear una pantalla móvil: Presiona <span class="key">F</span>, dibuja un marco y selecciona "iPhone 14 Pro" en el panel derecho, o define dimensiones personalizadas (375 × 812 px).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: DIBUJO -->
+        <div class="content-card">
+            <h2>✏️ 2. Herramientas de Dibujo</h2>
+
+            <h3>Formas Básicas</h3>
+
+            <div class="comandos-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Herramienta</th>
+                            <th>Atajo</th>
+                            <th>Descripción</th>
+                            <th>Uso común</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Rectangle</strong> 🔲</td>
+                            <td><span class="key">R</span></td>
+                            <td>Crea rectángulos y cuadrados</td>
+                            <td>Botones, cards, contenedores</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ellipse</strong> ⭕</td>
+                            <td><span class="key">O</span></td>
+                            <td>Crea círculos y elipses</td>
+                            <td>Avatares, iconos, badges</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Line</strong> ➖</td>
+                            <td><span class="key">L</span></td>
+                            <td>Dibuja líneas rectas</td>
+                            <td>Separadores, flechas, conectores</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Polygon</strong> ⬡</td>
+                            <td>—</td>
+                            <td>Crea polígonos regulares</td>
+                            <td>Iconos, decoraciones geométricas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Star</strong> ⭐</td>
+                            <td>—</td>
+                            <td>Crea estrellas de múltiples puntas</td>
+                            <td>Ratings, decoraciones, badges</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="screenshot-placeholder">
+                CAPTURA DE PANTALLA: Formas básicas creadas en Figma
+            </div>
+
+            <!-- Pen Tool -->
+            <div class="herramienta-box">
+                <div class="herramienta-header">
+                    <div class="herramienta-icon">✒️</div>
+                    <div class="herramienta-titulo">
+                        <h4>Pen Tool (Herramienta de Pluma)</h4>
+                    </div>
+                    <span class="atajo">P</span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">¿Qué hace?</div>
+                        <div class="info-text">Permite crear formas vectoriales personalizadas dibujando punto por punto.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">¿Cuándo usarlo?</div>
+                        <div class="info-text">Para crear iconos personalizados, ilustraciones vectoriales o formas complejas que no se pueden hacer con formas básicas.</div>
+                    </div>
+                </div>
+
+                <div class="ejemplo-box">
+                    <h5>💡 Ejemplo Práctico</h5>
+                    <p>Para dibujar un ícono de flecha curva: Presiona <span class="key">P</span>, haz clic para crear puntos, arrastra para crear curvas. Haz clic en el primer punto para cerrar la forma.</p>
+                </div>
+            </div>
+
+            <!-- Text Tool -->
+            <div class="herramienta-box">
+                <div class="herramienta-header">
+                    <div class="herramienta-icon">T</div>
+                    <div class="herramienta-titulo">
+                        <h4>Text Tool (Herramienta de Texto)</h4>
+                    </div>
+                    <span class="atajo">T</span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">¿Qué hace?</div>
+                        <div class="info-text">Crea cajas de texto para agregar contenido escrito a tus diseños.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">¿Cuándo usarlo?</div>
+                        <div class="info-text">Para títulos, párrafos, etiquetas de botones, o cualquier texto en tu interfaz.</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder">
+                    CAPTURA DE PANTALLA: Jerarquía de texto en un diseño
+                </div>
+
+                <div class="ejemplo-box">
+                    <h5>💡 Ejemplo Práctico</h5>
+                    <p>Para crear un título: Presiona <span class="key">T</span>, haz clic en el canvas, escribe tu texto. Cambia la fuente a "Inter Bold", tamaño 32px, color #1A1A1A en el panel derecho.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: ALINEACIÓN -->
+        <div class="content-card">
+            <h2>📐 3. Comandos de Alineación y Distribución</h2>
+
+            <p>La alineación correcta es esencial para crear diseños profesionales y balanceados.</p>
+
+            <h3>Comandos de Alineación</h3>
+
+            <div class="comandos-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Comando</th>
+                            <th>Atajo</th>
+                            <th>Función</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Alinear Izquierda</strong></td>
+                            <td><span class="key">Alt + A</span></td>
+                            <td>Alinea objetos al borde izquierdo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alinear Centro (Horizontal)</strong></td>
+                            <td><span class="key">Alt + H</span></td>
+                            <td>Centra objetos horizontalmente</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alinear Derecha</strong></td>
+                            <td><span class="key">Alt + D</span></td>
+                            <td>Alinea objetos al borde derecho</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alinear Arriba</strong></td>
+                            <td><span class="key">Alt + W</span></td>
+                            <td>Alinea objetos al borde superior</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alinear Centro (Vertical)</strong></td>
+                            <td><span class="key">Alt + V</span></td>
+                            <td>Centra objetos verticalmente</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alinear Abajo</strong></td>
+                            <td><span class="key">Alt + S</span></td>
+                            <td>Alinea objetos al borde inferior</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="screenshot-placeholder">
+                CAPTURA DE PANTALLA: Antes y después de alinear elementos
+            </div>
+
+            <h3>Distribución de Objetos</h3>
+
+            <div class="herramienta-box">
+                <div class="herramienta-header">
+                    <div class="herramienta-icon">⚖️</div>
+                    <div class="herramienta-titulo">
+                        <h4>Distribuir Objetos</h4>
+                    </div>
+                    <span class="atajo">Ctrl + Alt + H/V</span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">¿Qué hace?</div>
+                        <div class="info-text">Distribuye objetos con espaciado uniforme entre ellos.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">¿Cuándo usarlo?</div>
+                        <div class="info-text">Para crear espaciados consistentes entre botones, íconos, o cualquier serie de elementos.</div>
+                    </div>
+                </div>
+
+                <div class="ejemplo-box">
+                    <h5>💡 Ejemplo Práctico</h5>
+                    <p>Para distribuir 5 botones uniformemente: Selecciona todos los botones, presiona <span class="key">Ctrl + Alt + H</span> para distribución horizontal. Ahora tendrán el mismo espacio entre ellos.</p>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <h4>💡 Tips de Alineación</h4>
+                <ul>
+                    <li>Usa <span class="key">Shift</span> + Clic para seleccionar múltiples objetos</li>
+                    <li>Mantén <span class="key">Ctrl</span> al arrastrar para crear copias</li>
+                    <li>Usa guías inteligentes (activadas por defecto) que aparecen al mover objetos</li>
+                    <li>Activa la cuadrícula con <span class="key">Ctrl + '</span> para alineación precisa</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 4: COMPONENTES -->
+        <div class="content-card">
+            <h2>🧩 4. Trabajo con Componentes y Estilos</h2>
+
+            <p>Los componentes son elementos reutilizables que mantienen consistencia en todo tu diseño.</p>
+
+            <!-- Components -->
+            <div class="herramienta-box">
+                <div class="herramienta-header">
+                    <div class="herramienta-icon">🔗</div>
+                    <div class="herramienta-titulo">
+                        <h4>Crear Componente</h4>
+                    </div>
+                    <span class="atajo">Ctrl + Alt + K</span>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">¿Qué hace?</div>
+                        <div class="info-text">Convierte elementos seleccionados en un componente maestro reutilizable.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">¿Cuándo usarlo?</div>
+                        <div class="info-text">Para botones, iconos, cards o cualquier elemento que se repita en tu diseño.</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder">
+                    CAPTURA DE PANTALLA: Componente maestro y sus instancias
+                </div>
+
+                <div class="ejemplo-box">
+                    <h5>💡 Ejemplo Práctico</h5>
+                    <p>Para crear un botón reutilizable: Diseña tu botón perfecto, selecciónalo y presiona <span class="key">Ctrl + Alt + K</span>. Ahora puedes crear instancias con <span class="key">Ctrl + D</span>. Si cambias el maestro, todas las instancias se actualizan.</p>
+                </div>
+            </div>
+
+            <!-- Variants -->
+            <div class="herramienta-box">
+                <div class="herramienta-header">
+                    <div class="herramienta-icon">🎛️</div>
+                    <div class="herramienta-titulo">
+                        <h4>Variantes de Componentes</h4>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">¿Qué hace?</div>
+                        <div class="info-text">Agrupa diferentes estados o versiones de un componente en uno solo.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">¿Cuándo usarlo?</div>
+                        <div class="info-text">Para botones con diferentes estados (normal, hover, disabled) o componentes con múltiples tamaños.</div>
+                    </div>
+                </div>
+
+                <div class="ejemplo-box">
+                    <h5>💡 Ejemplo Práctico</h5>
+                    <p>Para crear variantes de un botón: Crea 3 versiones (Normal, Hover, Disabled), selecciónalas todas, clic derecho → "Combine as variants". Ahora puedes cambiar entre estados desde el panel de propiedades.</p>
+                </div>
+            </div>
+
+            <h3>Estilos Reutilizables</h3>
+
+            <div class="componentes-grid">
+                <div class="componente-card">
+                    <div class="componente-icon">🎨</div>
+                    <h4>Color Styles</h4>
+                    <p>Define una paleta de colores para mantener consistencia en todo el proyecto.</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><strong>Ejemplo:</strong> Primary: #FF6B8A, Secondary: #D4A574</p>
+                </div>
+                <div class="componente-card">
+                    <div class="componente-icon"></div>
+                <div class="componente-card">
+                <div class="componente-icon">📝</div>
+                <h4>Text Styles</h4>
+                <p>Crea estilos de texto predefinidos para títulos, subtítulos, párrafos, etc.</p>
+                <p style="margin-top: 10px; font-size: 0.9em;"><strong>Ejemplo:</strong> H1: Inter Bold 32px, Body: Inter Regular 16px</p>
+            </div>
+
+            <div class="componente-card">
+                <div class="componente-icon">✨</div>
+                <h4>Effect Styles</h4>
+                <p>Guarda sombras, desenfoques y otros efectos para reutilizarlos fácilmente.</p>
+                <p style="margin-top: 10px; font-size: 0.9em;"><strong>Ejemplo:</strong> Drop Shadow: 0 4px 8px rgba(0,0,0,0.1)</p>
+            </div>
+        </div>
+
+        <div class="screenshot-placeholder">
+            CAPTURA DE PANTALLA: Panel de estilos en Figma
+        </div>
+     </ul>
+            </div>
+        </div>
+
+    <!-- SECCIÓN 5: PROTOTIPADO -->
+    <div class="content-card">
+        <h2>🎬 5. Herramientas de Prototipado</h2>
+
+        <p>El prototipado en Figma permite crear interacciones y simular el flujo de navegación de tu aplicación.</p>
+
+        <div class="herramienta-box">
+            <div class="herramienta-header">
+                <div class="herramienta-icon">🔗</div>
+                <div class="herramienta-titulo">
+                    <h4>Crear Conexiones de Prototipo</h4>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">¿Qué hace?</div>
+                    <div class="info-text">Conecta frames para crear flujos interactivos entre pantallas.</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">¿Cuándo usarlo?</div>
+                    <div class="info-text">Para mostrar cómo navega un usuario entre diferentes pantallas de tu aplicación.</div>
+                </div>
+            </div>
+
+            <div class="screenshot-placeholder">
+                CAPTURA DE PANTALLA: Conexiones de prototipo entre frames
+            </div>
+        </div>
+
+        <h3>Pasos para Crear un Prototipo</h3>
+
+        <div class="prototipo-steps">
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Cambia a modo Prototype:</strong> Haz clic en la pestaña "Prototype" en el panel derecho.
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Selecciona un elemento interactivo:</strong> Haz clic en un botón o elemento que activará la interacción.
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Arrastra la conexión:</strong> Arrastra el círculo azul que aparece hacia el frame de destino.
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Configura la interacción:</strong> Define el trigger (On Click, On Hover) y la animación (Instant, Dissolve, Smart Animate).
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Previsualiza:</strong> Presiona <span class="key">Shift + Space</span> o el botón Play (▶️) para probar tu prototipo.
+            </div>
+        </div>
+
+        <h3>Tipos de Interacciones</h3>
+
+        <div class="comandos-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trigger</th>
+                        <th>Descripción</th>
+                        <th>Uso común</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>On Click</strong></td>
+                        <td>Se activa al hacer clic</td>
+                        <td>Navegación entre pantallas, botones</td>
+                    </tr>
+                    <tr>
+                        <td><strong>On Hover</strong></td>
+                        <td>Se activa al pasar el mouse</td>
+                        <td>Tooltips, estados hover de botones</td>
+                    </tr>
+                    <tr>
+                        <td><strong>While Hovering</strong></td>
+                        <td>Activo mientras el mouse está encima</td>
+                        <td>Menús desplegables, efectos hover</td>
+                    </tr>
+                    <tr>
+                        <td><strong>After Delay</strong></td>
+                        <td>Se activa después de X milisegundos</td>
+                        <td>Splash screens, carruseles automáticos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>On Drag</strong></td>
+                        <td>Se activa al arrastrar</td>
+                        <td>Sliders, scroll horizontal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Animaciones</h3>
+
+        <div class="componentes-grid">
+            <div class="componente-card">
+                <div class="componente-icon">⚡</div>
+                <h4>Instant</h4>
+                <p>Cambio inmediato sin animación. Útil para navegación rápida.</p>
+            </div>
+
+            <div class="componente-card">
+                <div class="componente-icon">💫</div>
+                <h4>Dissolve</h4>
+                <p>Transición con desvanecimiento. Crea cambios suaves entre pantallas.</p>
+            </div>
+
+            <div class="componente-card">
+                <div class="componente-icon">🎯</div>
+                <h4>Smart Animate</h4>
+                <p>Anima automáticamente elementos que coinciden entre frames. Ideal para microinteracciones.</p>
+            </div>
+
+            <div class="componente-card">
+                <div class="componente-icon">➡️</div>
+                <h4>Move In/Out</h4>
+                <p>El frame nuevo entra desde un lado. Perfecto para navegación lateral.</p>
+            </div>
+        </div>
+
+        <div class="ejemplo-box">
+            <h5>💡 Ejemplo Práctico de Smart Animate</h5>
+            <p><strong>Paso 1:</strong> Crea dos frames: uno con un botón pequeño (estado normal) y otro con el mismo botón más grande (estado hover).</p>
+            <p><strong>Paso 2:</strong> Asegúrate de que ambos botones tengan el mismo nombre en las capas.</p>
+            <p><strong>Paso 3:</strong> Conecta el primer frame al segundo con "On Hover" → "Smart Animate".</p>
+            <p><strong>Resultado:</strong> El botón crecerá suavemente cuando pases el mouse sobre él.</p>
+        </div>
+
+        <div class="tips-box">
+            <h4>💡 Tips de Prototipado</h4>
+            <ul>
+                <li>Usa <span class="key">Shift + Space</span> para modo presentación rápida</li>
+                <li>Smart Animate funciona mejor cuando los elementos tienen el mismo nombre</li>
+                <li>Define un frame de inicio marcándolo como "Flow starting point"</li>
+                <li>Puedes compartir prototipos con <span class="key">Share</span> → "Copy link"</li>
+                <li>Usa overflow scrolling en frames para simular scroll realista</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Atajos adicionales -->
+    <div class="content-card">
+        <h2>⌨️ Atajos de Teclado Esenciales</h2>
+
+        <div class="comandos-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Atajo</th>
+                        <th>Acción</th>
+                        <th>Categoría</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="key">Ctrl + D</span></td>
+                        <td>Duplicar selección</td>
+                        <td>Edición</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Ctrl + G</span></td>
+                        <td>Agrupar elementos</td>
+                        <td>Organización</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Ctrl + Shift + G</span></td>
+                        <td>Desagrupar elementos</td>
+                        <td>Organización</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Ctrl + [</span></td>
+                        <td>Enviar atrás</td>
+                        <td>Orden</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Ctrl + ]</span></td>
+                        <td>Traer adelante</td>
+                        <td>Orden</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Alt + Arrastrar</span></td>
+                        <td>Duplicar al arrastrar</td>
+                        <td>Edición</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Ctrl + R</span></td>
+                        <td>Renombrar capa</td>
+                        <td>Organización</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Ctrl + /</span></td>
+                        <td>Búsqueda rápida</td>
+                        <td>Navegación</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Z</span></td>
+                        <td>Zoom (hacer clic y arrastrar)</td>
+                        <td>Vista</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key">Space</span></td>
+                        <td>Pan (mover canvas)</td>
+                        <td>Vista</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+</html>
+
