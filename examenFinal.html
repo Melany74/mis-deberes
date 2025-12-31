@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Examen Final - Proyecto de Desarrollo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -222,35 +223,46 @@
             text-align: center;
         }
 
-        .checklist {
+        .figma-link a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #FFB6C1, #FF9AB0);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .figma-link a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.5);
+        }
+
+        .diagram-container {
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 12px;
             margin: 20px 0;
+            border: 2px solid #e8e8e8;
+            overflow-x: auto;
         }
 
-        .checklist-item {
-            padding: 12px;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .checklist-item:last-child {
-            border-bottom: none;
-        }
-
-        .checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #FFB6C1;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FFB6C1;
+        .diagram-title-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
             font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .mermaid {
+            text-align: center;
+            margin: 20px 0;
         }
 
         @media (max-width: 768px) {
@@ -278,7 +290,7 @@
             <div class="tags">
             </div>
             <div class="objetivo-box">
-                <h3>🎯 Objetivo</h3>
+                <h3>Objetivo</h3>
                 <p>Aplicar todo el proceso de desarrollo de software, desde el contacto con el cliente hasta la aprobación del diseño en Figma, integrando todos los conocimientos en un proyecto completo.</p>
             </div>
         </div>
@@ -292,7 +304,7 @@
             <div class="pregunta-box">
                 <div class="pregunta-titulo">❓ ¿Quién es el cliente?</div>
                 <div class="respuesta-box">
-                    <p>Edwin Josue - Cajero de Oxxo</p>
+                    <p>Edwin Malavé - Cajero de Oxxo</p>
                 </div>
             </div>
 
@@ -311,7 +323,7 @@
             </div>
 
             <div class="pregunta-box">
-                <div class="pregunta-titulo">❓ ¿Qué preguntas le realize para entender mejor el problema?</div>
+                <div class="pregunta-titulo">❓ ¿Qué preguntas le realicé para entender mejor el problema?</div>
                 <div class="respuesta-box">
                     <p>1. ¿Qué tipo de productos maneja en su inventario?<br>
                     2. ¿Cuántos productos aproximadamente maneja?<br>
@@ -373,9 +385,8 @@
                     5. Registro de entrada de mercancía<br>
                     6. Registro de salida de mercancía<br>
                     7. Alertas y notificaciones<br>
-                    8. Reportes e historial<br>
-                    9. Gestión de usuarios<br>
-                    10. Configuración del sistema</p>
+                    8. Gestión de usuarios<br>
+                
                 </div>
             </div>
 
@@ -386,10 +397,7 @@
                     <strong>Movimientos:</strong> Tipo de movimiento (entrada/salida), fecha y hora, cantidad, producto afectado, usuario que realizó el movimiento, comentarios<br><br>
                     <strong>Usuarios:</strong> Nombre, usuario, contraseña (encriptada), rol, correo electrónico, fecha de creación<br><br>
                     <strong>Proveedores:</strong> Nombre, contacto, teléfono, dirección</p>
-        
-  
-            </div>
-     </ul>
+                </div>
             </div>
         </div>
            
@@ -441,16 +449,39 @@
             </div>
 
             <h3>📊 Diagramas de Flujo</h3>
-            <div class="evidencias-grid">
-                <div class="evidencia-card">
-                    <div class="evidencia-icon"></div>
-                    <div class="evidencia-title">Diagrama de Flujo 1</div>
-                    <p class="evidencia-desc">imagen del diagrama de flujo principal</p>
-                </div>
-                <div class="evidencia-card">
-                    <div class="evidencia-icon"></div>
-                    <div class="evidencia-title">Diagrama de Flujo 2</div>
-                    <p class="evidencia-desc">diagramas de procesos secundarios</p>
+            
+            <!-- DIAGRAMA 1: REGISTRO DE PRODUCTO -->
+            <div class="diagram-container">
+                <div class="diagram-title-box">📋 Diagrama 1: Proceso de Registro de Producto Nuevo</div>
+                <div class="mermaid">
+flowchart TD
+    Start([Inicio]) --> Login{¿Usuario autenticado?}
+    Login -->|No| End1([Fin - Acceso denegado])
+    Login -->|Sí| CheckRole{¿Tiene permisos?}
+    CheckRole -->|No| End2([Fin - Sin permisos])
+    CheckRole -->|Sí| Form[Usuario accede a 'Agregar Producto']
+    Form --> Input[Ingresa datos del producto:<br/>- Nombre<br/>- Código de barras<br/>- Precio<br/>- Stock inicial<br/>- Stock mínimo]
+    Input --> ValidateEmpty{¿Campos completos?}
+    ValidateEmpty -->|No| ErrorEmpty[Mostrar error:<br/>Completar campos]
+    ErrorEmpty --> Input
+    ValidateEmpty -->|Sí| ValidateCode{¿Código ya existe?}
+    ValidateCode -->|Sí| ErrorDuplicate[Mostrar error:<br/>Código duplicado]
+    ErrorDuplicate --> Input
+    ValidateCode -->|No| ValidatePrice{¿Precio > 0?}
+    ValidatePrice -->|No| ErrorPrice[Mostrar error:<br/>Precio inválido]
+    ErrorPrice --> Input
+    ValidatePrice -->|Sí| Save[Sistema guarda producto<br/>en base de datos]
+    Save --> Update[Actualizar inventario]
+    Update --> Success[Mostrar mensaje:<br/>Producto registrado exitosamente]
+    Success --> Display[Producto aparece<br/>en lista de inventario]
+    Display --> End3([Fin])
+    
+    style Start fill:#e1f5e1
+    style End1 fill:#ffe1e1
+    style End2 fill:#ffe1e1
+    style End3 fill:#e1f5e1
+    style Save fill:#fff4e1
+    style Success fill:#e1f5e1
                 </div>
             </div>
 
@@ -480,11 +511,66 @@
                 </div>
             </div>
 
-            <div class="evidencias-grid">
-                <div class="evidencia-card">
-                    <div class="evidencia-icon">🎯</div>
-                    <div class="evidencia-title">Diagrama de Casos de Uso</div>
-                    <p class="evidencia-desc">diagrama de casos de uso</p>
+            <!-- DIAGRAMA 2: CASOS DE USO -->
+            <div class="diagram-container">
+                <div class="diagram-title-box">🎯 Diagrama 2: Casos de Uso del Sistema</div>
+                <div class="mermaid">
+graph LR
+    subgraph Sistema["Sistema de Inventario Oxxo"]
+        UC1[Iniciar Sesión]
+        UC2[Consultar Stock]
+        UC3[Buscar Producto]
+        UC4[Registrar Venta/Salida]
+        UC5[Registrar Producto Nuevo]
+        UC6[Editar Producto]
+        UC7[Eliminar Producto]
+        UC8[Registrar Entrada de Mercancía]
+        UC9[Ver Alertas de Stock Bajo]
+        UC10[Generar Reportes]
+        UC11[Ver Historial de Movimientos]
+        UC12[Gestionar Usuarios]
+        UC13[Configurar Sistema]
+    end
+    
+    Cajero[👤 Cajero/Empleado]
+    Encargado[👤 Encargado de Tienda]
+    Admin[👤 Administrador]
+    
+    Cajero --> UC1
+    Cajero --> UC2
+    Cajero --> UC3
+    Cajero --> UC4
+    
+    Encargado --> UC1
+    Encargado --> UC2
+    Encargado --> UC3
+    Encargado --> UC4
+    Encargado --> UC5
+    Encargado --> UC6
+    Encargado --> UC7
+    Encargado --> UC8
+    Encargado --> UC9
+    Encargado --> UC10
+    Encargado --> UC11
+    
+    Admin --> UC1
+    Admin --> UC2
+    Admin --> UC3
+    Admin --> UC4
+    Admin --> UC5
+    Admin --> UC6
+    Admin --> UC7
+    Admin --> UC8
+    Admin --> UC9
+    Admin --> UC10
+    Admin --> UC11
+    Admin --> UC12
+    Admin --> UC13
+    
+    style Cajero fill:#FFE4E8
+    style Encargado fill:#FFF5E1
+    style Admin fill:#E1F5E1
+    style Sistema fill:#E8E8E8
                 </div>
             </div>
         </div>
@@ -493,82 +579,74 @@
         <div class="content-card">
             <div class="fase-number">4</div>
             <h2>🎨 Fase 4: Diseño de la Solución</h2>
-            <p>Se crea prototipo visual del sistema en Figma.</p>
+            <p>Se crea el prototipo visual del sistema en Figma.</p>
 
             <h3>✏️ Bocetos con Figma</h3>
             <div class="pregunta-box">
-                <div class="pregunta-titulo">❓inicial</div>
+                <div class="pregunta-titulo">❓ Describe tu proceso de bocetado inicial</div>
                 <div class="respuesta-box">
                     <p>Boceto de las pantallas principales del sistema:<br><br>
                     
                     <strong>Dashboard:</strong> Diseñé una vista con tarjetas que muestran métricas clave (total de productos, productos con stock bajo, movimientos del día) y una tabla con los últimos productos registrados.<br><br>
                     
-                    <strong>Gestión de productos:</strong> Boceto de una tabla con filtros de búsqueda, botones de acción (agregar, editar, eliminar) y vista de detalles de cada producto.<br><br>
+                    <strong>Gestión de productos:</strong> Boceto de una tabla con filtros de búsqueda, botones de acción (agregar, entrada, salida) y vista de detalles de cada producto.<br><br>
                     
                     <strong>Registro de movimientos:</strong> Pantalla simple con formulario para seleccionar producto, ingresar cantidad y tipo de movimiento (entrada/salida).<br><br>
                     
-                    La organización de la información priorizó la facilidad de acceso rápido a las funciones más usadas, con menú lateral para navegación y diseño responsive para tablets y móviles.</p>
-                </div>
-            </div>
-
-            <div class="evidencias-grid">
-                <div class="evidencia-card">
-                    <div class="evidencia-icon"></div>
-                    <p class="evidencia-desc">Se Agrega imágenes de los bocetos</p>
+        
                 </div>
             </div>
 
             <h3>🎨 Prototipos en Figma</h3>
             <div class="pregunta-box">
-                <div class="pregunta-titulo">❓ ¿Qué elementos de diseño utilize?</div>
+                <div class="pregunta-titulo">❓ ¿Qué elementos de diseño utilicé?</div>
                 <div class="respuesta-box">
-                    <p><strong>Colores:</strong> Paleta profesional con azul oscuro (#1E3A8A) como color principal para transmitir confianza, verde (#10B981) para indicadores positivos y stock disponible, rojo (#EF4444) para alertas de stock bajo, y gris claro (#F3F4F6) para fondos.<br><br>
-                    
-                    <strong>Tipografía:</strong> Inter como fuente principal por su excelente legibilidad en pantallas digitales, usando pesos 400 para texto normal y 600 para títulos.<br><br>
-                    
-                    <strong>Botones:</strong> Estilo moderno con bordes redondeados (8px radius), estados hover con efecto de elevación, y colores según la acción (azul para primarios, rojo para eliminar, verde para confirmar).<br><br>
-                    
-                    <strong>Iconos:</strong> Set de iconos de Lucide Icons para mantener consistencia visual en todo el sistema.<br><br>
-                    
-                    <strong>Espaciado:</strong> Sistema de 8px grid para mantener consistencia en márgenes y paddings.</p>
+                   <p>
+<strong>Colores:</strong> Se utilizó una paleta predominante en tonos rojos como color principal del sistema, aplicada en el menú lateral, encabezados y botones principales para dar fuerza visual y resaltar las acciones importantes. El color verde se emplea para indicar estados normales y entradas de productos, mientras que el color rojo se usa para alertas de stock bajo y salidas. Los fondos blancos y claros permiten una mejor lectura y organización de la información.<br><br>
+
+<strong>Tipografía:</strong> Se aplicó una tipografía sans serif moderna y legible, adecuada para interfaces móviles, permitiendo una lectura clara en listas de productos, tarjetas informativas y dashboards. Se diferencian títulos, subtítulos y texto mediante variaciones de tamaño y peso.<br><br>
+
+<strong>Botones:</strong> Los botones presentan un diseño con bordes redondeados y colores diferenciados según su función: rojo para acciones principales y de salida, verde para entradas y confirmaciones. Esto facilita la comprensión rápida de las acciones disponibles para el usuario.<br><br>
+
+<strong>Iconos:</strong> Se incorporaron iconos simples y claros en el menú, tarjetas y barra de navegación inferior para mejorar la experiencia de usuario y hacer la interfaz más intuitiva y visualmente comprensible.<br><br>
+
+<strong>Espaciado:</strong> El diseño mantiene un espaciado uniforme entre tarjetas, botones y secciones, logrando una interfaz ordenada, limpia y fácil de navegar en dispositivos móviles.
+</p>
+
                 </div>
             </div>
 
             <div class="pregunta-box">
                 <div class="pregunta-titulo">❓ ¿Cuántas pantallas diseñaste?</div>
                 <div class="respuesta-box">
-                    <p>Diseñé un total de <strong>10 pantallas principales</strong> en Figma:<br>
-                    1. Login / Inicio de sesión<br>
-                    2. Dashboard principal<br>
-                    3. Inventario - Lista de productos<br>
-                    4. Agregar nuevo producto<br>
-                    5. Editar producto existente<br>
-                    6. Registrar entrada de mercancía<br>
-                    7. Registrar salida de mercancía<br>
-                    8. Alertas y notificaciones<br>
-                    9. Historial de movimientos<br>
-                    10. Gestión de usuarios (solo para administrador)<br><br>
-                    
-                    Además, incluí variantes para estados móviles (responsive) de las pantallas más importantes.</p>
+                    <p>Diseñé un total de <strong>4 pantallas principales</strong> en Figma:<br>
+                        1. Pantalla de inicio de sesión (Login), donde el usuario ingresa sus credenciales.<br>
+                        2. Dashboard principal, que muestra un resumen del inventario con métricas como productos totales, stock disponible y alertas de stock bajo.<br>
+                        3. Pantalla de inventario / productos, donde se visualiza la lista de productos con su código, stock actual, estado y opciones de entrada y salida.<br>
+                        4. Pantalla de alertas de stock, que notifica los productos con stock por debajo del mínimo y permite restablecer el inventario.<br><br>
+
+                    Estas pantallas fueron diseñadas con enfoque <strong>mobile-first</strong>, manteniendo una navegación clara y consistente entre secciones.</p>
                 </div>
             </div>
 
             <div class="pregunta-box">
                 <div class="pregunta-titulo">❓ ¿Qué interacciones y animaciones incluiste?</div>
                 <div class="respuesta-box">
-                    <p><strong>Navegación:</strong> Conexiones entre todas las pantallas mediante el menú lateral y botones de acción. Flujo completo desde login hasta las funciones principales.<br><br>
-                    
-                    <strong>Efectos hover:</strong> Cambios de color y elevación en botones cuando el usuario pasa el cursor sobre ellos.<br><br>
-                    
-                    <strong>Transiciones:</strong> Animaciones suaves (ease-in-out 300ms) al cambiar entre pantallas para una experiencia más fluida.<br><br>
-                    
-                    <strong>Modales:</strong> Ventanas emergentes para confirmar acciones importantes como eliminar productos, con overlay oscuro.<br><br>
-                    
-                    <strong>Estados de formularios:</strong> Validación visual en tiempo real con cambios de color en campos (verde para válido, rojo para error).<br><br>
-                    
-                    <strong>Notificaciones toast:</strong> Mensajes de confirmación que aparecen temporalmente después de acciones exitosas.</p>
-                </div>
-            </div>
+                    <p>
+El prototipo incluye interacciones enfocadas en la usabilidad y claridad del sistema. Se implementaron acciones de <strong>navegación entre pantallas</strong> mediante el menú lateral y la barra de navegación inferior, permitiendo cambiar entre Dashboard, Productos y Alertas de forma intuitiva.<br><br>
+
+Los <strong>botones de acción</strong> como “Entrada”, “Salida”, “Agregar producto” y “Restablecer” cuentan con interacciones de clic que simulan el flujo real del sistema, llevando al usuario a la pantalla correspondiente o mostrando el cambio de estado del producto.<br><br>
+
+En la pantalla de alertas, se incluyó una interacción que permite identificar visualmente los productos con <strong>stock bajo</strong> mediante el uso de colores y tarjetas resaltadas, facilitando la toma de decisiones.<br><br>
+
+Las animaciones utilizadas son <strong>simples y funcionales</strong>, principalmente transiciones suaves entre pantallas para simular la navegación móvil, manteniendo una experiencia de usuario clara y sin sobrecargar la interfaz.
+</p>
+
+                        <div>   
+     </div>
+        </div>
+
+        <div class="content-card">
 
             <h3>🏗️ Arquitectura del Sistema</h3>
             <div class="pregunta-box">
@@ -589,15 +667,24 @@
                     <strong>Arquitectura:</strong> Cliente-Servidor con arquitectura de 3 capas (Presentación, Lógica de Negocio, Datos).</p>
                 </div>
             </div>
+
+            <div class="diagram-placeholder">
+                <p>🏗️ <strong>Diagrama de Arquitectura del Sistema</strong></p>
+                <p style="font-size: 0.9em; color: #666; margin-top: 10px;">Muestra las capas: Presentación (Frontend), Lógica de Negocio (Backend) y Datos (PostgreSQL)</p>
+                <div style="margin-top: 15px;">
+                    <span style="background: #E1F5E1; padding: 10px 20px; border-radius: 20px; font-weight: 600;">✅ Diagrama de arquitectura creado</span>
+                </div>
+            </div>
         </div>
 
-       <!-- ENLACE FIGMA -->
+        <!-- ENLACE FIGMA -->
         <div class="content-card">
             <div class="figma-box">
                 <h3>🔗 Enlace al Proyecto de Figma</h3>
-                <p style="color: #666; margin: 15px 0;">Comparte el enlace público de tu diseño en Figma</p>
+                <p style="color: #666; margin: 15px 0;">Diseño completo del Sistema de Inventario Oxxo</p>
                 <div class="figma-link">
-                    <input type="text" placeholder="enlace del proyecto de Figma" value="">
+                    <input type="text" value="https://www.figma.com/proto/J3lhdPLCyeDnlhPl9N8CRf/Sistema-de-Inventario?node-id=22-32&p=f&t=5u3vOQNlIgvwwfpn-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" readonly>
+                    <a href="https://www.figma.com/proto/J3lhdPLCyeDnlhPl9N8CRf/Sistema-de-Inventario?node-id=22-32&p=f&t=5u3vOQNlIgvwwfpn-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" target="_blank">🎨 Ver Proyecto en Figma</a>
                 </div>
             </div>
         </div>
@@ -607,39 +694,32 @@
             <h2>✅ Evidencias de Aprobación del Cliente</h2>
             <p>Documenta la aprobación del cliente con capturas de pantalla, correos o mensajes.</p>
 
-            <div class="evidencias-grid">
-                <div class="evidencia-card">
-                    <div class="evidencia-icon">📧</div>
-                    <div class="evidencia-title">Correos de Aprobación</div>
-                </div>
+            
+ <img src="evidencia.png.jpeg" alt="Evidencia del prototipo del sistema de inventario" width="300">
+ <img src="Reacccion.png.jpeg" alt="Evidencia del prototipo del sistema de inventario" width="300">
 
-                <div class="evidencia-card">
-                    <div class="evidencia-icon">💬</div>
-                    <div class="evidencia-title">Mensajes/Chat</div>
-                </div>
-
-                <div class="evidencia-card">
-                    <div class="evidencia-icon">📸</div>
-                    <div class="evidencia-title">Reunión de Aprobación</div>
-                </div>
-
-               
-            </div>
+                
+              
 
             <div class="pregunta-box">
                 <div class="pregunta-titulo">❓ ¿Cómo reaccionó el cliente al ver el diseño?</div>
                 <div class="respuesta-box">
-                    <p style="color: #999; font-style: italic;">...</p>
+                    <p style="color: #999; font-style: italic;">[Pendiente]</p>
                 </div>
             </div>
 
             <div class="pregunta-box">
                 <div class="pregunta-titulo">❓ ¿Hubo cambios o iteraciones en el diseño?</div>
                 <div class="respuesta-box">
-                    <p style="color: #999; font-style: italic;">...</p>
+                    <p style="color: #999; font-style: italic;">[Pendiente]</p>
                 </div>
             </div>
-       </div>
+        </div>
+
+        
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
