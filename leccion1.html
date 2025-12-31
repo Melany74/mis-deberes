@@ -877,6 +877,80 @@ console.log(<span class="function-name">promedioArray</span>(edades));   <span c
                 </div>
             </div>
         </div>
+<hr>
+
+<section>
+    <h2>Práctica Realizada en Clase</h2>
+    <p>En esta sección se evidencian los ejercicios desarrollados en clase, aplicando los conceptos aprendidos.</p>
+
+    <h3>Funciones</h3>
+
+    <script>
+        function sumar(a, b) {
+            return a + b;
+        }
+
+        function restar(a, b) {
+            return a - b;
+        }
+
+        function multiplicar(a, b) {
+            return a * b;
+        }
+
+        function dividir(a, b) {
+            return a / b;
+        }
+
+        function saludar(nombre) {
+            return "Hola " + nombre;
+        }
+    </script>
+
+    <h3>Composable Text reutilizable (simulado en HTML)</h3>
+    <p>Función reutilizable que muestra nombre, edad y carrera.</p>
+
+    <div id="datos"></div>
+
+    <script>
+        function mostrarDatos(nombre, edad, carrera) {
+            document.getElementById("datos").innerHTML =
+                "<strong>Nombre:</strong> " + nombre + "<br>" +
+                "<strong>Edad:</strong> " + edad + "<br>" +
+                "<strong>Carrera:</strong> " + carrera;
+        }
+
+        mostrarDatos("Thaiz", 18, "Desarrollo de Software");
+    </script>
+
+    <h3>Calculadora Básica</h3>
+
+    <input type="number" id="n1" placeholder="Número 1">
+    <input type="number" id="n2" placeholder="Número 2">
+    <br><br>
+
+    <button onclick="calcular('+')">Sumar</button>
+    <button onclick="calcular('-')">Restar</button>
+    <button onclick="calcular('*')">Multiplicar</button>
+    <button onclick="calcular('/')">Dividir</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular(op) {
+            let a = Number(document.getElementById("n1").value);
+            let b = Number(document.getElementById("n2").value);
+            let r = 0;
+
+            if (op === '+') r = a + b;
+            if (op === '-') r = a - b;
+            if (op === '*') r = a * b;
+            if (op === '/') r = a / b;
+
+            document.getElementById("resultado").innerText = "Resultado: " + r;
+        }
+    </script>
+</section>
 
 
             </div>
