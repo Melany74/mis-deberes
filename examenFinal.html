@@ -668,12 +668,69 @@ Las animaciones utilizadas son <strong>simples y funcionales</strong>, principal
                 </div>
             </div>
 
-            <div class="diagram-placeholder">
-                <p>🏗️ <strong>Diagrama de Arquitectura del Sistema</strong></p>
-                <p style="font-size: 0.9em; color: #666; margin-top: 10px;">Muestra las capas: Presentación (Frontend), Lógica de Negocio (Backend) y Datos (PostgreSQL)</p>
-                <div style="margin-top: 15px;">
-                    <span style="background: #E1F5E1; padding: 10px 20px; border-radius: 20px; font-weight: 600;">✅ Diagrama de arquitectura creado</span>
-                </div>
+            </head>
+<body>
+    <div class="container">
+        <h1>Arquitectura del Sistema de Inventario Oxxo</h1>
+        <p class="subtitle">Stack Tecnológico Completo</p>
+        <div class="mermaid">
+graph TB
+    subgraph Cliente["💻 CAPA DE PRESENTACIÓN"]
+        Web[Navegador Web<br/>Chrome, Firefox, Safari]
+        Mobile[Dispositivos Móviles<br/>Tablets, Smartphones]
+        Desktop[Computadoras<br/>Windows, Mac, Linux]
+    end
+    
+    subgraph Frontend["🎨 FRONTEND - React + TypeScript"]
+        Components[Componentes React<br/>Dashboard, Inventario, Formularios]
+        State[Gestión de Estado<br/>Context API / Redux]
+        Styles[Estilos<br/>Tailwind CSS]
+        Router[Enrutamiento<br/>React Router]
+    end
+    
+    subgraph Backend["⚙️ BACKEND - Node.js + Express"]
+        API[API REST<br/>Endpoints HTTP]
+        Auth[Autenticación<br/>JWT Tokens]
+        Logic[Lógica de Negocio<br/>Validaciones, Reglas]
+        Middleware[Middleware<br/>Seguridad, Validaciones]
+    end
+    
+    subgraph Database["🗄️ BASE DE DATOS - PostgreSQL"]
+        Tables[Tablas:<br/>- Productos<br/>- Movimientos<br/>- Usuarios<br/>- Proveedores]
+    end
+    
+    subgraph Hosting["☁️ HOSTING"]
+        FrontHost[Vercel / Netlify<br/>Frontend]
+        BackHost[Railway / Render<br/>Backend + BD]
+    end
+    
+    Web --> Frontend
+    Mobile --> Frontend
+    Desktop --> Frontend
+    
+    Frontend <-->|HTTP/HTTPS| API
+    API --> Auth
+    API --> Logic
+    API --> Middleware
+    
+    Logic <-->|SQL Queries| Tables
+    
+    Frontend -.->|Deploy| FrontHost
+    Backend -.->|Deploy| BackHost
+    Database -.->|Hosted in| BackHost
+    
+    style Cliente fill:#FFE4E8
+    style Frontend fill:#FFF5E1
+    style Backend fill:#E1F5E1
+    style Database fill:#E8F4FF
+    style Hosting fill:#F0E8FF
+        </div>
+
+    
+   
+    
+
+                                </div>
             </div>
         </div>
 
